@@ -5,8 +5,8 @@ module Api
       respond_to :json
       def create
         @response=HTTParty.post("https://www.strava.com/oauth/token",:body=>{
-          :client_id => 3744,
-          :client_secret =>"8f4201a1795463efa7dc71b034cb2160a54459fd",
+          :client_id => ENV['CLIENT_ID'],
+          :client_secret => ENV['CLIENT_SECRET'],
           :code=>params[:code]
           }.to_json,
           :headers => {'Content-Type'=>'application/json'})
