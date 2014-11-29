@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20141127065545) do
     t.string   "strava_name"
     t.string   "token"
     t.string   "refreshtoken"
+    t.integer  "strava_id"
     t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"

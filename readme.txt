@@ -1,8 +1,5 @@
 API USAGE
 
-
-
-
 Resource :User
 
 Endpoint:/api/v1/users      Method:Post    Action: new user

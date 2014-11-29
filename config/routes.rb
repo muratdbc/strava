@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create,:show,:update,:destroy]
       resources :teams, only: [:index,:create,:show,:update,:destroy]
       resources :games, only: [:index,:create,:show,:update,:destroy]
+      resources :tokens, only: [:create]
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
