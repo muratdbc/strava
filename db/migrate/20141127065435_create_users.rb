@@ -11,7 +11,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :profile_img
       t.string    :token
       t.integer   :strava_id
-      t.references :team, index: true
+      t.integer :team_id, index: true
 
       t.timestamps
     end
