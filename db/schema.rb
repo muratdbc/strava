@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 20141201034943) do
 
   create_table "user_activities", force: true do |t|
     t.integer  "user_id"
-    t.integer  "game_id"
     t.string   "map_polyline"
     t.integer  "distance"
     t.datetime "run_rate"
