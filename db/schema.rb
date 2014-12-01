@@ -16,10 +16,11 @@ ActiveRecord::Schema.define(version: 20141201034943) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "game_invites", force: true do |t|
-    t.integer  "team_id"
-    t.integer  "to_id"
-    t.integer  "from_id"
+  create_table "activities", force: true do |t|
+    t.integer  "user_id"
+    t.string   "map_polyline"
+    t.integer  "distance"
+    t.date     "date_of_activity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,8 +45,8 @@ ActiveRecord::Schema.define(version: 20141201034943) do
     t.string   "name"
     t.string   "description"
     t.string   "location"
-    t.string   "total_wins"
-    t.string   "total_losses"
+    t.integer  "total_wins"
+    t.integer  "total_losses"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,15 +55,6 @@ ActiveRecord::Schema.define(version: 20141201034943) do
     t.integer  "game_id"
     t.integer  "user_id"
     t.string   "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "user_activities", force: true do |t|
-    t.integer  "user_id"
-    t.string   "map_polyline"
-    t.integer  "distance"
-    t.datetime "run_rate"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -82,7 +74,5 @@ ActiveRecord::Schema.define(version: 20141201034943) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "users", ["team_id"], name: "index_users_on_team_id", using: :btree
 
 end

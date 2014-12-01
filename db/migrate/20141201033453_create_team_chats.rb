@@ -4,7 +4,7 @@ class CreateTeamChats < ActiveRecord::Migration
     	create_table :team_chats do |t|
 	      t.string 	 :content
 	      t.integer  :user_id
-	
+
 	      t.timestamps
 	    end
 	end

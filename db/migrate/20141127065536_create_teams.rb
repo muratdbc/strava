@@ -4,8 +4,8 @@ class CreateTeams < ActiveRecord::Migration
       t.string 	 :name
       t.string 	 :description
       t.string 	 :location
-      t.string   :total_wins
-      t.string   :total_losses
+      t.integer  :total_wins
+      t.integer  :total_losses
 
       t.timestamps
     end
