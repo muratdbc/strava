@@ -1,0 +1,173 @@
+
+<!-- *********** Curent Match active section *********** -->
+
+
+<!-- ***** Game information ***** -->
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-links">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="main-links">
+
+          <ul class="nav nav-pills nav-justified">
+            <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> PROFILE</a></li>
+            <li><a href="/match"><span class="glyphicon glyphicon-road"></span> CURRENT MATCH</a></li>
+            <li><a href="/teams"><span class="glyphicon glyphicon-eye-open"></span> TEAMS</a></li>
+          </ul>
+
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+
+    </nav>
+
+<div class="non_nav">
+
+  <div class="current_match_header">
+    <h2><%=@game_name%></h2>
+    <h4><%=@game_description%></h2>
+  </div>
+
+    <!-- ***** Display players in order (OR maybe team vs team layout) ***** -->
+    <div class="row">
+
+      <div class="col-md-6 team_show">
+
+        <% @home_team.each do |player| %>
+
+        <div class="col-md-3 team_player team_a">
+          <img src="<%=player[:image]%>" alt="" class="img-circle team_match_image">
+          <p><%=player[:name]%></p>
+          <p><%=player[:miles_run]%></p>
+        </div>
+
+        <%end%>
+      </div>
+
+      <div class="col-md-6 team_show">
+
+         <% @home_team.each do |player| %>
+
+        <div class="col-md-3 team_player team_b">
+          <img src="<%=player[:image]%>" alt="" class="img-circle team_match_image">
+          <p><%=player[:name]%></p>
+          <p><%=player[:miles_run]%></p>
+        </div>
+
+        <%end%>
+      </div>
+    </div><!-- end row -->
+
+    <br><br>
+
+    <!-- ***** Current score ***** -->
+
+    <div class="row">
+
+      <div class="col-md-5 team_show team_a">
+        <h3><%=@team_a_name%></h3>
+      </div>
+
+      <div class="col-md-2 team_show">
+
+        <h4><%=@countdown%></h4>
+
+      </div>
+
+      <div class="col-md-5 team_show team_b">
+        <h3><%=@team_b_name%></h3>
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-5 team_show team_a">
+        <h1><%=@team_a_weekly_miles%> meters</h1>
+      </div>
+      <div class="col-md-2 team_show">
+        <h1>VS.</h1>
+      </div>
+      <div class="col-md-5 team_show team_b">
+        <h1><%=@team_b_weekly_miles%> meters</h1>
+      </div>
+    </div>
+    <br><br><br>
+
+    <!-- ***** Team A run logs ***** -->
+
+    <div class="row">
+
+      <div class="col-md-4 team_show team_a">
+        <ul class="list-group">
+          <% @running_data_a.each do |runner| %>
+
+          <li class="list-group-item"><%=runner[:user]%> ran <%=runner[:distance]%> miles <a href="<%=runner[:map]%>" data-lightbox="team_a_maps" data-title="<%=runner[:user]%> ran <%=runner[:distance]%> miles"><span class="glyphicon glyphicon-map-marker"></span> </a></li>
+
+          <%end%>
+        </ul>
+      </div>
+
+      <!-- ***** Talk shit forum ***** -->
+
+      <div class="col-md-4 team_show">
+
+        <div class="title_box">
+          <label>Talk Shit</label>
+        </div>
+
+        <div class="actionBox">
+
+          <form class="form-inline" role="form">
+
+            <div class="form-group">
+              <input class="form-control" type="text" placeholder="Say something" />
+            </div>
+
+            <div class="form-group">
+              <button class="btn btn-default">Add</button>
+            </div>
+
+          </form>
+
+          <ul class="commentList">
+            <% @shit_talks.each do |talk| %>
+            <li>
+              <div class="commenterImage">
+                <img src="<%=talk[:user_pic]%>" />
+              </div>
+              <div class="commentText">
+                <p class=""><%=talk[:body]%></p> <span class="date sub-text"><%=talk[:date]%></span>
+              </div>
+            </li>
+            <%end%>
+          </ul>
+        </div> <!-- actin box ends -->
+      </div>
+
+      <!-- ***** Team B run logs ***** -->
+
+      <div class="col-md-4 team_show team_b">
+        <ul class="list-group">
+          <% @running_data_b.each do |runner| %>
+
+          <li class="list-group-item"><%=runner[:user]%> ran <%=runner[:distance]%> miles <a href="<%=runner[:map]%>" data-lightbox="team_b_maps" data-title="<%=runner[:user]%> ran <%=runner[:distance]%> miles"><span class="glyphicon glyphicon-map-marker"></span> </a></li>
+
+          <%end%>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>

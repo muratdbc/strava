@@ -8,6 +8,11 @@ Rails.application.routes.draw do
       resources :tokens, only: [:create]
     end
   end
+
+  resources :users do
+    resources :games
+  end
+  resources :teams
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
