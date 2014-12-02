@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     end
   end
 
+
+  root 'users#show'
   resources :users do
     resources :games
   end

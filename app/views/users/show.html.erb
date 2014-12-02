@@ -1,0 +1,103 @@
+@user.firstname
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-links">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-links">
+
+      <ul class="nav nav-pills nav-justified">
+        <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> PROFILE</a></li>
+        <li><a href="/match"><span class="glyphicon glyphicon-road"></span> CURRENT MATCH</a></li>
+        <li><a href="/teams"><span class="glyphicon glyphicon-eye-open"></span> TEAMS</a></li>
+      </ul>
+
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+
+</nav>
+
+<div class="non_nav">
+
+  <div class="row">
+
+    <div class="col-md-4 user_information">
+      <img src="<%=@strava_picture%>" alt="" class="img-circle profile_picture">
+      <h3><%=@user.strava_name%></h3>
+      <h4><%=@user.firstname%> <%=@user.lastname%></h4>
+      <h4><%=@user.email%></h4>
+      <hr>
+      <h5><%= total_distance(@user) %> miles run</h5>  <!-- not implemented -->
+      <h5><%=@user.city%>, <%=@user.state%></h5>
+      <br>
+      <a href="/logout"><button type="button" class="btn btn-default">Log Out</button></a>
+    </div>
+
+    <div class="col-md-8 team_information">
+      <h1><%=@team.name%></h1>
+      <h3><%=@team.description%></h3>
+      <div class="row">
+
+        <% @teammates.each do |teammate| %>
+        <div class="col-md-4">
+          <img src="images/bg2.jpg" alt="" class="img-circle team_picture">
+          <div>
+            <h6><%=teammate.strava_name%></h6>
+            <h6><%=teammate.firstname%> <%=teammate.lastname%></h6>
+            <h6><%=total_distance(teammate) %> miles run</h6> <!-- not implemented -->
+          </div>
+        </div>
+        <% end %>
+
+      <div class="team_stats">
+        <p><%= total_distance_team(@all_team_members) %> total miles run || <%=@team.total_wins%> - <%=@team.total_losses%> record</p> <!-- not implemented -->
+        </div>
+        <div class="team_messages">
+        </div>
+
+        <div class="team_chat_wrapper">
+
+          <div class="title_box">
+            <label>Team Chat</label>
+          </div>
+          <div class="actionBox">
+            <form class="form-inline" role="form">
+              <div class="form-group">
+                <input class="form-control" type="text" placeholder="Say something" />
+              </div>
+              <div class="form-group">
+                <button class="btn btn-default">Add</button>
+              </div>
+            </form>
+
+            <ul class="commentList">
+              <% @team_chats.each do |chat| %>
+               
+              <li>
+                <div class="commenterImage">
+                  <img src="<%=chat.user.profile_img%>" />
+                </div>
+                <div class="commentText">
+                  <p class=""><%=chat.content%></p> <span class="date sub-text"><%=chat.updated_at%></span>
+                </div>
+              </li>
+             
+              <%end%>
+            </ul>
+          </div>
+        </div>
+      </div> <!-- divititis
+    </div> -->
+
+  </div> <!-- non nav -->
