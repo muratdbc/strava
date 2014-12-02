@@ -17,6 +17,7 @@ class GamesController < ApplicationController
     @away_team = Team.find(@game.awayteam_id)
 
     @home_team = @home_team.users
+    @away_team = @away_team.users
 
     # player.activities.where(created_at: @game.created_at)
 
