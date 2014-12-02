@@ -35,8 +35,8 @@
 <div class="non_nav">
 
   <div class="current_match_header">
-    <h2><%=@game_name%></h2>
-    <h4><%=@game_description%></h2>
+    <h2><%=@game.name%></h2>
+    <h4><%=@game.description%></h2>
   </div>
 
     <!-- ***** Display players in order (OR maybe team vs team layout) ***** -->
@@ -47,9 +47,9 @@
         <% @home_team.each do |player| %>
 
         <div class="col-md-3 team_player team_a">
-          <img src="<%=player[:image]%>" alt="" class="img-circle team_match_image">
-          <p><%=player[:name]%></p>
-          <p><%=player[:miles_run]%></p>
+          <img src="" alt="" class="img-circle team_match_image">
+          <p><%=player.firstname%> <%=player.lastname%></p>
+          <p>placeholder</p>
         </div>
 
         <%end%>
@@ -57,12 +57,12 @@
 
       <div class="col-md-6 team_show">
 
-         <% @home_team.each do |player| %>
+         <% @arr.each do |placeholder| %>
 
         <div class="col-md-3 team_player team_b">
-          <img src="<%=player[:image]%>" alt="" class="img-circle team_match_image">
-          <p><%=player[:name]%></p>
-          <p><%=player[:miles_run]%></p>
+          <img src="" alt="" class="img-circle team_match_image">
+          <p><%=placeholder%></p>
+          <p><%=placeholder%></p>
         </div>
 
         <%end%>
@@ -76,17 +76,17 @@
     <div class="row">
 
       <div class="col-md-5 team_show team_a">
-        <h3><%=@team_a_name%></h3>
+        <h3><%=@placeholder%></h3>
       </div>
 
       <div class="col-md-2 team_show">
 
-        <h4><%=@countdown%></h4>
+        <h4><%=@placeholder%></h4>
 
       </div>
 
       <div class="col-md-5 team_show team_b">
-        <h3><%=@team_b_name%></h3>
+        <h3><%=@placeholder%></h3>
       </div>
 
     </div>
@@ -94,13 +94,13 @@
 
     <div class="row">
       <div class="col-md-5 team_show team_a">
-        <h1><%=@team_a_weekly_miles%> meters</h1>
+        <h1><%=@placeholder%> meters</h1>
       </div>
       <div class="col-md-2 team_show">
         <h1>VS.</h1>
       </div>
       <div class="col-md-5 team_show team_b">
-        <h1><%=@team_b_weekly_miles%> meters</h1>
+        <h1><%=@placeholder%> meters</h1>
       </div>
     </div>
     <br><br><br>
@@ -111,9 +111,9 @@
 
       <div class="col-md-4 team_show team_a">
         <ul class="list-group">
-          <% @running_data_a.each do |runner| %>
+          <% @arr.each do |placeholder| %>
 
-          <li class="list-group-item"><%=runner[:user]%> ran <%=runner[:distance]%> miles <a href="<%=runner[:map]%>" data-lightbox="team_a_maps" data-title="<%=runner[:user]%> ran <%=runner[:distance]%> miles"><span class="glyphicon glyphicon-map-marker"></span> </a></li>
+          <li class="list-group-item"><%=placeholder%> ran <%=placeholder%> miles <a href="" data-lightbox="team_a_maps" data-title="<%=placeholder%> ran <%=placeholder%> miles"><span class="glyphicon glyphicon-map-marker"></span> </a></li>
 
           <%end%>
         </ul>
@@ -142,13 +142,13 @@
           </form>
 
           <ul class="commentList">
-            <% @shit_talks.each do |talk| %>
+            <% @arr.each do |placeholder| %>
             <li>
               <div class="commenterImage">
-                <img src="<%=talk[:user_pic]%>" />
+                <img src="" />
               </div>
               <div class="commentText">
-                <p class=""><%=talk[:body]%></p> <span class="date sub-text"><%=talk[:date]%></span>
+                <p class=""><%=placeholder%></p> <span class="date sub-text"><%=placeholder%></span>
               </div>
             </li>
             <%end%>
@@ -160,9 +160,9 @@
 
       <div class="col-md-4 team_show team_b">
         <ul class="list-group">
-          <% @running_data_b.each do |runner| %>
+          <% @arr.each do |placeholder| %>
 
-          <li class="list-group-item"><%=runner[:user]%> ran <%=runner[:distance]%> miles <a href="<%=runner[:map]%>" data-lightbox="team_b_maps" data-title="<%=runner[:user]%> ran <%=runner[:distance]%> miles"><span class="glyphicon glyphicon-map-marker"></span> </a></li>
+          <li class="list-group-item"><%=placeholder%> ran <%=placeholder%> miles <a href="" data-lightbox="team_b_maps" data-title="=placeholder%> ran <%=placeholder%> miles"><span class="glyphicon glyphicon-map-marker"></span> </a></li>
 
           <%end%>
         </ul>
