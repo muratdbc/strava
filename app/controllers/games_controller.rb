@@ -5,6 +5,7 @@ class GamesController < ApplicationController
     @placeholder = 'placeholder'
     @arr =["one","two","three","four"]
 
+
     @current_user_id = 1
 
     @user = User.find(@current_user_id)
@@ -15,13 +16,11 @@ class GamesController < ApplicationController
     @home_team = Team.find(@game.team_id)
     @away_team = Team.find(@game.awayteam_id)
 
-    p @home_team.users
-    p @away_team.users
+    @home_team = @home_team.users
+
+    # player.activities.where(created_at: @game.created_at)
 
     render :index
   end
-
-
-
 
 end
