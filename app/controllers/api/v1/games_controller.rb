@@ -16,9 +16,11 @@ module Api
           format.json { render json: @game.to_json }
         end
       end
+
       def update
         respond_with Game.update(params[:id], game_params)
       end
+
       def destroy
        respond_with Game.destroy(params[:id])
       end
