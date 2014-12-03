@@ -28,16 +28,30 @@
     </nav>
 
     <div class="non_nav">
-
-      <form class="form_field_wrapper" role="form" action="" method="">
+<!--       <form class="form_field_wrapper" role="form" action="" method="get" action="/search"
+      >
         <div class="form-group">
           <input type="text" name="" class="form-control search_teams_form" placeholder="search teams..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'search teams...'">
+         <input name="commit" class="form-control search_teams_form" type="submit" value="Search" />
         </div>
-      </form>
+      </form> -->
+
+  <%= form_tag teams_path, method: "GET" do %>
+    <p>
+      <%= label_tag :query %><br />
+      <%= text_field_tag :query %>
+    </p>
+
+    <p><%= submit_tag "Submit" %></p>
+  <% end %>
+
+
+
 
 
       <!-- just need one of these -->
       <div class="row">
+        
         <% @teams.each do |team| %>
         <div class="col-md-4 entire_team">
           <h3><%=team.name%></h3>
