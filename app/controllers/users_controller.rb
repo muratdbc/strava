@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user)
+    @user = User.find(session[:current_user_id])
 
     if @team = @user.team
       @all_team_members = @team.users
