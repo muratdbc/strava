@@ -58,15 +58,11 @@
   </div>
 
 
-  <form class="form_field_wrapper" role="form" action="" method="">
-    <div class="form-group">
-      <input type="text" name="" class="form-control search_teams_form" placeholder="search teams..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'search teams...'">
-    </div>
-  </form>
-
-
-  <!-- yayaya -->
-
+  <div class="form_field_wrapper">
+  <%= form_tag teams_path, :class=>"search_teams_form", method: "GET" do %>
+    <%= text_field_tag :query, nil, :class=>"form-control search_terms_form", :placeholder => "search" %>
+  <% end %>
+</div>
 
   <!-- just need one of these -->
   <div class="row">
