@@ -50,4 +50,6 @@ class GamesController < ApplicationController
     render :index
   end
 
+
+
 end
