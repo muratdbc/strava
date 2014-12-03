@@ -15,8 +15,8 @@
         <div class="collapse navbar-collapse" id="main-links">
 
           <ul class="nav nav-pills nav-justified">
-            <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> PROFILE</a></li>
-            <li><a href="/match"><span class="glyphicon glyphicon-road"></span> CURRENT MATCH</a></li>
+            <li><a href="/users/<%=session[:current_user_id]%>"><span class="glyphicon glyphicon-user"></span> PROFILE</a></li>
+            <li><a href="/users/<%=session[:current_user_id]%>/games/"><span class="glyphicon glyphicon-road"></span> CURRENT MATCH</a></li>
             <li><a href="/teams"><span class="glyphicon glyphicon-eye-open"></span> TEAMS</a></li>
           </ul>
 

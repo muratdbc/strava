@@ -15,10 +15,9 @@
     <div class="collapse navbar-collapse" id="main-links">
 
       <ul class="nav nav-pills nav-justified">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> PROFILE</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-road"></span> CURRENT MATCH</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> TEAMS</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> ABOUT</a></li>
+        <li><a href="/users/<%=session[:current_user_id]%>"><span class="glyphicon glyphicon-user"></span> PROFILE</a></li>
+        <li><a href="/users/<%=session[:current_user_id]%>/games/"><span class="glyphicon glyphicon-road"></span> CURRENT MATCH</a></li>
+        <li><a href="/teams"><span class="glyphicon glyphicon-eye-open"></span> TEAMS</a></li>
       </ul>
 
 
@@ -35,11 +34,11 @@
 
    <!-- ***** User information ***** -->
 
-  <%= render 'user_sidebar' %>
+   <%= render 'user_sidebar' %>
 
-  <!-- ***** No Team information ***** -->
+   <!-- ***** No Team information ***** -->
 
-  <div class="col-md-8 no_team">
+   <div class="col-md-8 no_team">
     <div class="no_team_content">
       <h3>No team selected</h3>
       <br>

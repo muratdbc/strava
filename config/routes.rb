@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   end
 
 
-  root 'users#show'
+  root 'users#welcome'
+  get 'strava_auth' , to: 'users#strava_auth'
   resources :users do
     resources :games
   end
@@ -19,8 +20,6 @@ Rails.application.routes.draw do
   resources :team_chats, only: [:new, :create]
 
 
-  get 'welcome', to: 'users#welcome'
-  get 'strava_auth' , to: 'users#strava_auth'
   # /get 'strava_auth_url', to :
   # get "welcomes" => 'welcome'
 
