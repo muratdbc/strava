@@ -13,11 +13,11 @@
 
           <% @teammates.each do |teammate| %>
           <div class="col-md-4">
-            <img src="images/bg2.jpg" alt="" class="img-circle team_picture">
+            <img src="<%=teammate.profile_img%>" alt="" class="img-circle team_picture">
             <div>
               <h6><%=teammate.strava_name%></h6>
               <h6><%=teammate.firstname%> <%=teammate.lastname%></h6>
-              <h6><%=total_distance(teammate) %> miles run</h6> <!-- not implemented -->
+              <h6><%=total_distance(teammate) %> meters run</h6> <!-- not implemented -->
             </div>
           </div>
           <% end %>
