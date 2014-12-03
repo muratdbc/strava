@@ -5,10 +5,10 @@ class GamesController < ApplicationController
     @placeholder = 'placeholder'
     @arr =["one","two","three","four"]
 
-    @current_user_id = 1 #_strava_session
+    # @current_user_id = 1 #_strava_session
 
     #get current user
-    @user = User.find(@current_user_id)
+    @user = User.find(1)
     #get users team
     @team = @user.team_id
 
@@ -43,6 +43,8 @@ class GamesController < ApplicationController
         @away_activities << activity
       end
     end
+
+    @end_time = @game.created_at + 7.days
 
     render :index
   end
