@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     if @team = @user.team
       @all_team_members = @team.users
       @teammates = @team.users.where.not(:id=> @user[:id])
-      
+
       @team_chats = []
       @all_team_members.each do |person|
         person.team_chats.each do |chat|
@@ -57,41 +57,87 @@ class UsersController < ApplicationController
       @team_chats = @team_chats.sort_by { |chat| chat.updated_at }.reverse!
     end
 
+
     render :show
 
 
-    u=User.find(params[:id])
-    if !u.activities
-    t=u.team.games.pluck(:team_id,:awayteam_id)
-    users=[]
-    t.flatten.each { |tid|  users << Team.find(tid).users }
-    tokens=[]
-    users.each { |user | tokens << user.pluck(:token,:id)}
+    # Logic to pull the strava api
+    # Find user and get the game through the team
+    # if they are not registered with the team then pull only user data
+    # if they are not registered with a game pull only the teams data
+    # get 8 users id and token into array
+    # pull one by one
+    # if the user dont have an activity then create one
+    # else get the id of the last activity from db get the
+    # activity table  activityid and check if it incoming response/(s) id
+    # is greater than activiy id
+
+
+    #if the user does not have a team pull only the user data from Strava
     now=Date.today
     p week_start_unix = now.at_beginning_of_week.to_time.to_i
-    p tokens
-    tokens.each do |token|
-      token.each do |item|
-     tempm=HTTParty.get("https://www.strava.com/api/v3/athlete/activities", headers: {"Authorization" => "Bearer #{item[0]}"},query: {:after => week_start_unix})
-      tempm.parsed_response.each do | active|
-        user=User.find(item[1])
-        p "acitivyt id "
-        p user.activities.last.activityid
-        lat= user.activities.last
-        if (lat==nil)
-          user.activities.create(activityid: active["id"] ,user_id: user.id,map_polyline: active["map"]["summary_polyline"], distance: active["distance"])
+    if (!@user.team)
+      user_strava_data=HTTParty.get("https://www.strava.com/api/v3/athlete/activities", headers: {"Authorization" => "Bearer #{@user.token}"},query: {:after => week_start_unix})
+      p @user.activities.count
+      if (@user.activities.count==0)
+          user_strava_data.each do |active|
+            # p "ere"
+            # p @user.activities
+            # p active
+            act= @user.activities.new
+            # p @user.activities.last.activityid
+            # p  active["id"]
+            if  active["id"]>@user.activities.last.activityid
+              act.activityid= active["id"]
+              act.user_id= @user.id
+              act.map_polyline= active["map"]["summary_polyline"]
+              act.distance= active["distance"]
+              act.save
+            end
+            p @user.activities.last
+          end
+      else
+         p user_strava_data
+          user_strava_data.each do |active|
+            p "in the else before the user act. count"
+             p @user.activities.count
+               if (active["id"]>@user.activities.last.activityid )
+                 @user.activities.create(activityid: active["id"] ,user_id: @user.id,map_polyline: active["map"]["summary_polyline"], distance: active["distance"])
+               end
+          end
         end
-        if (active["id"]>lat.activityid )
-           user.activities.create(activityid: active["id"] ,user_id: user.id,map_polyline: active["map"]["summary_polyline"], distance: active["distance"])
-         end
-       end
-      end
+
     end
 
+    # if the user does have a team but does not in a game
 
+    # u=User.find(params[:id])
 
-    p "here"
-  end
+    # t=u.team.games.pluck(:team_id,:awayteam_id)
+    # users=[]
+    # t.flatten.each { |tid|  users << Team.find(tid).users }
+    # tokens=[]
+    # users.each { |user | tokens << user.pluck(:token,:id)}
 
+    # p tokens
+    # tokens.each do |token|
+    #   token.each do |item|
+    #  tempm=HTTParty.get("https://www.strava.com/api/v3/athlete/activities", headers: {"Authorization" => "Bearer #{item[0]}"},query: {:after => week_start_unix})
+    #   tempm.parsed_response.each do | active|
+    #     user=User.find(item[1])
+    #     p "acitivyt id "
+    #     user.activities
+    #     p user.activities.last.activityid
+    #     lat= user.activities.last
+    #     if (lat==nil)
+    #       user.activities.create(activityid: active["id"] ,user_id: user.id,map_polyline: active["map"]["summary_polyline"], distance: active["distance"])
+    #     end
+    #     if (active["id"]>lat.activityid )
+    #        user.activities.create(activityid: active["id"] ,user_id: user.id,map_polyline: active["map"]["summary_polyline"], distance: active["distance"])
+    #        end
+    #       end
+    #     end
+    #   p "here"
+    # end
   end
 end
