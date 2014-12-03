@@ -73,6 +73,7 @@ class UsersController < ApplicationController
     # is greater than activiy id
 
 
+
     #if the user does not have a team pull only the user data from Strava
     now=Date.today
     p week_start_unix = now.at_beginning_of_week.to_time.to_i
