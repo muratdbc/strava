@@ -5,6 +5,7 @@ class CreateActivities < ActiveRecord::Migration
     	t.string      :map_polyline
       t.integer  	  :distance
       t.date        :date_of_activity
+      t.integer     :activityid, :default => 0
 
       t.timestamps
     end

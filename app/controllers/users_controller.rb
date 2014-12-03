@@ -62,6 +62,39 @@ class UsersController < ApplicationController
       # p "here"
     end
 
-    render :show
+     render :show
+
+    u=User.find(params[:id])
+    if !u.activities
+    t=u.team.games.pluck(:team_id,:awayteam_id)
+    users=[]
+    t.flatten.each { |tid|  users << Team.find(tid).users }
+    tokens=[]
+    users.each { |user | tokens << user.pluck(:token,:id)}
+    now=Date.today
+    p week_start_unix = now.at_beginning_of_week.to_time.to_i
+    p tokens
+    tokens.each do |token|
+      token.each do |item|
+     tempm=HTTParty.get("https://www.strava.com/api/v3/athlete/activities", headers: {"Authorization" => "Bearer #{item[0]}"},query: {:after => week_start_unix})
+      tempm.parsed_response.each do | active|
+        user=User.find(item[1])
+        p "acitivyt id "
+        p user.activities.last.activityid
+        lat= user.activities.last
+        if (lat==nil)
+          user.activities.create(activityid: active["id"] ,user_id: user.id,map_polyline: active["map"]["summary_polyline"], distance: active["distance"])
+        end
+        if (active["id"]>lat.activityid )
+           user.activities.create(activityid: active["id"] ,user_id: user.id,map_polyline: active["map"]["summary_polyline"], distance: active["distance"])
+         end
+       end
+      end
+    end
+
+
+
+    p "here"
+  end
   end
 end

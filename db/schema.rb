@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20141201034943) do
     t.string   "map_polyline"
     t.integer  "distance"
     t.date     "date_of_activity"
+    t.integer  "activityid",       default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
