@@ -35,6 +35,7 @@ gem 'rails_12factor', group: :production
 gem 'httparty'
 
 gem 'dotenv-rails', :groups => [:development, :test]
+gem 'byebug', :groups => [:development, :test]
 
 
 # Use ActiveModel has_secure_password

@@ -1,5 +1,4 @@
 
-
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 
   <div class="container-fluid">
@@ -28,24 +27,11 @@
 
 </nav>
 
-<%= render 'user_sidebar' %>
-
 
 <div class="non_nav">
 
   <div class="row">
-
-    <div class="col-md-4 user_information">
-      <img src="<%=@strava_picture%>" alt="" class="img-circle profile_picture">
-      <h3><%=@user.strava_name%></h3>
-      <h4><%=@user.firstname%> <%=@user.lastname%></h4>
-      <h4><%=@user.email%></h4>
-      <hr>
-      <h5><%= total_distance(@user) %> miles run</h5>  <!-- not implemented -->
-      <h5><%=@user.city%>, <%=@user.state%></h5>
-      <br>
-      <a href="/logout"><button type="button" class="btn btn-default">Log Out</button></a>
-    </div>
+    <%= render 'user_sidebar' %>
 
 
     <div class="col-md-8 team_information">
@@ -76,14 +62,27 @@
             <label>Team Chat</label>
           </div>
           <div class="actionBox">
-            <form class="form-inline" role="form">
+
+
+
+
+    
+        <%= form_for :team_chat, url: team_chats_path, remote: true, html: {class: "nifty_form"} do |f| %>
+          <%= f.text_field :content %>
+          <%= f.submit %>
+        <% end %>
+
+
+       
+
+        <!--     <form id="team_chat_form" class="form-inline" role="form" accept-charset="UTF-8" action="/team_chats" method="post">
               <div class="form-group">
-                <input id="team-chat-input" class="form-control" type="text" placeholder="Say something" />
+                <input id="article_title" class="form-control" name="team_chats[content]" type="text" />
               </div>
               <div class="form-group">
-                <button class="btn btn-default">Add</button>
+                <input name="commit" type="submit" value="Create" class="btn btn-default" />
               </div>
-            </form>
+            </form> -->
 
             <ul id="team_chat_target" class="commentList">
               <% @team_chats.each do |chat| %>
@@ -101,9 +100,11 @@
             </ul>
           </div>
         </div>
-      </div> <!-- divititis
-    </div> -->
+      </div>
+    </div>
 
 
   </div> <!-- non nav -->
+
+</div>
 

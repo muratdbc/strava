@@ -4,14 +4,17 @@ class TeamChatsController < ApplicationController
 
   def create
     user = User.find(1)
-    user = User.find(current_user.id)
 
-    response_with user.team_chats.create(content: team_chats_params)
+    chat = user.team_chats.create(team_chat_params)
+
+    respond_to do |format|
+      format.json{ render :json => chat.to_json(:include => :user) }
+    end
   end
 
   private
 
-  def team_chats_params
-    params.require(:team_chats).permit(:content)
+  def team_chat_params
+    params.require(:team_chat).permit(:content)
   end
 end

@@ -15,11 +15,16 @@ Rails.application.routes.draw do
     resources :games
   end
   resources :teams
+  
+  resources :team_chats, only: [:new, :create]
+
 
   get 'welcome', to: 'users#welcome'
   get 'strava_auth' , to: 'users#strava_auth'
   # /get 'strava_auth_url', to :
   # get "welcomes" => 'welcome'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
