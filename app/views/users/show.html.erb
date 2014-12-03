@@ -5,7 +5,7 @@
   <div class="row">
     <%= render 'user_sidebar' %>
 
-    <% if @team = @user.team %>
+    <% if @user.team %>
       <div class="col-md-8 team_information">
         <h1><%=@team.name%></h1>
         <h3><%=@team.description%></h3>
@@ -23,7 +23,7 @@
           <% end %>
 
         <div class="team_stats">
-          <p><%= total_distance_team(@all_team_members) %> total miles run || <%=@team.total_wins%> - <%=@team.total_losses%> record</p> <!-- not implemented -->
+          <p><%= total_distance_team(@all_team_members) %> total meters run || <%=@team.total_wins%> - <%=@team.total_losses%> record</p> <!-- not implemented -->
           </div>
           <div class="team_messages">
           </div>

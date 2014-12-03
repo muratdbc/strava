@@ -44,7 +44,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(session[:current_user_id])
 
-    if @team = @user.team
+    if @user.team
+      @team = @user.team
       @all_team_members = @team.users
       @teammates = @team.users.where.not(:id=> @user[:id])
 
@@ -56,6 +57,7 @@ class UsersController < ApplicationController
       end
       @team_chats = @team_chats.sort_by { |chat| chat.updated_at }.reverse!
     end
+
 
 
     render :show
