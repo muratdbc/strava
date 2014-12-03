@@ -5,10 +5,8 @@ class GamesController < ApplicationController
     @placeholder = 'placeholder'
     @arr =["one","two","three","four"]
 
-    @current_user_id = 1 #_strava_session
-
     #get current user
-    @user = User.find(@current_user_id)
+    @user = User.find(current_user)
     #get users team
     @team = @user.team_id
 

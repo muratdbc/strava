@@ -26,51 +26,71 @@
 
     </nav>
 
-<div class="non_nav">
+    <div class="non_nav">
 
-  <form class="form_field_wrapper" role="form" action="" method="">
-    <div class="form-group">
-      <input type="text" name="" class="form-control search_teams_form" placeholder="search teams..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'search teams...'">
-    </div>
-  </form>
-
-  <div class="row">
-
-    <!-- just need one of these -->
-    <% @teams.each do |team| %>
-    <div class="col-md-4 entire_team">
-      <h3><%=team[0][:first_name]%></h3>
-      <h5>Team description</h5><br>
-
-      <div class="row sub_row">
-
-        <div class="col-md-6 team_member">
-          <img src="images/bg1.jpg" alt="" class="img-circle team_member_image">
-          <p><%=team[0][:first_name]%> <%=team[0][:last_name]%></p>
-          <p><%=team[0][:miles_run]%></p>
+      <form class="form_field_wrapper" role="form" action="" method="">
+        <div class="form-group">
+          <input type="text" name="" class="form-control search_teams_form" placeholder="search teams..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'search teams...'">
         </div>
-        <div class="col-md-6 team_member">
-          <img src="images/bg1.jpg" alt="" class="img-circle team_member_image">
-          <p>team member name</p>
-          <p>miles run</p>
+      </form>
+
+
+      <!-- just need one of these -->
+      <div class="row">
+        <% @teams.each do |team| %>
+        <div class="col-md-4 entire_team">
+          <h3><%=team.name%></h3>
+          <h5><%=team.description%></h5><br>
+
+          <div class="row sub_row">
+            <div class="col-md-6 team_member">
+              <img src="<%=team.users[0].profile_img%>" alt="" class="img-circle team_member_image">
+              <p><%=team.users[0].firstname%> <%=team.users[0].lastname%></p>
+              <p><%=team.users[0].state%></p>
+              <% if team.users[0].activities.length > 0%>
+              <p>Last run: <%=team.users[0].activities.last.distance%></p>
+              <%else%>
+              <p>No recent runs</p>
+              <%end%>
+            </div>
+            <div class="col-md-6 team_member">
+              <img src="<%=team.users[1].profile_img%>" alt="" class="img-circle team_member_image">
+              <p><%=team.users[1].firstname%> <%=team.users[1].lastname%></p>
+              <p><%=team.users[1].state%></p>
+              <% if team.users[1].activities.length > 0%>
+              <p>Last run: <%=team.users[1].activities.last.distance%></p>
+              <%else%>
+              <p>No recent runs</p>
+              <%end%>
+            </div>
+          </div> <!-- sub row -->
+          <div class="row sub_row">
+            <div class="col-md-6 team_member">
+              <img src="<%=team.users[2].profile_img%>" alt="" class="img-circle team_member_image">
+              <p><%=team.users[2].firstname%> <%=team.users[2].lastname%></p>
+              <p><%=team.users[2].state%></p>
+              <% if team.users[2].activities.length > 0%>
+              <p>Last run: <%=team.users[2].activities.last.distance%></p>
+              <%else%>
+              <p>No recent runs</p>
+              <%end%>
+            </div>
+            <div class="col-md-6 team_member">
+              <img src="<%=team.users[3].profile_img%>" alt="" class="img-circle team_member_image">
+              <p><%=team.users[3].firstname%> <%=team.users[3].lastname%></p>
+              <p><%=team.users[3].state%></p>
+              <% if team.users[3].activities.length > 0%>
+              <p>Last run: <%=team.users[3].activities.last.distance%></p>
+              <%else%>
+              <p>No recent runs</p>
+              <%end%>
+            </div>
+            <div class="hidden_button"><button type="button" class="btn btn-danger">Challenge Team</button></div>
+          </div>
         </div>
-      </div> <!-- sub row -->
-      <div class="row sub_row">
-        <div class="col-md-6 team_member">
-          <img src="images/bg1.jpg" alt="" class="img-circle team_member_image">
-          <p>team member name</p>
-          <p>miles run</p>
-        </div>
-        <div class="col-md-6 team_member">
-          <img src="images/bg1.jpg" alt="" class="img-circle team_member_image">
-          <p>team member name</p>
-          <p>miles run</p>
-        </div>
-        <div class="hidden_button"><button type="button" class="btn btn-danger">Challenge Team</button></div>
+
+        <%end%>
+
       </div>
+
     </div>
-    <%end%>
-
-  </div>
-
-</div>
