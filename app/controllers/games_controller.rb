@@ -50,10 +50,6 @@ class GamesController < ApplicationController
     render :index
   end
 
-  def create
-    p "****************"
-    p @challengeInvite=Game.create(:team_id=>session[:id], :awayteam_id=>params[team_id])
-    erb :index
-  end
+
 
 end
