@@ -1,97 +1,70 @@
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<%= render 'layouts/header'  %>
 
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-links">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
+<div class="non_nav">
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="main-links">
-
-          <ul class="nav nav-pills nav-justified">
-
-            <li><a href="/users/<%=session[:current_user_id]%>"><span class="glyphicon glyphicon-user"></span> PROFILE</a></li>
-            <li><a href="/users/<%=session[:current_user_id]%>/games/"><span class="glyphicon glyphicon-road"></span> CURRENT MATCH</a></li>
-            <li><a href="/teams"><span class="glyphicon glyphicon-eye-open"></span> TEAMS</a></li>
-          </ul>
-
-
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-
-    </nav>
-
-    <div class="non_nav">
-
-      <form class="form_field_wrapper" role="form" action="" method="">
-        <div class="form-group">
-          <input type="text" name="" class="form-control search_teams_form" placeholder="search teams..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'search teams...'">
-        </div>
-      </form>
-
-
-      <!-- just need one of these -->
-      <div class="row">
-        <% @teams.each do |team| %>
-        <div class="col-md-4 entire_team">
-          <h3><%=team.name%></h3>
-          <h5><%=team.description%></h5><br>
-
-          <div class="row sub_row">
-            <div class="col-md-6 team_member">
-              <img src="<%=team.users[0].profile_img%>" alt="" class="img-circle team_member_image">
-              <p><%=team.users[0].firstname%> <%=team.users[0].lastname%></p>
-              <p><%=team.users[0].state%></p>
-              <% if team.users[0].activities.length > 0%>
-              <p>Last run: <%=team.users[0].activities.last.distance%></p>
-              <%else%>
-              <p>No recent runs</p>
-              <%end%>
-            </div>
-            <div class="col-md-6 team_member">
-              <img src="<%=team.users[1].profile_img%>" alt="" class="img-circle team_member_image">
-              <p><%=team.users[1].firstname%> <%=team.users[1].lastname%></p>
-              <p><%=team.users[1].state%></p>
-              <% if team.users[1].activities.length > 0%>
-              <p>Last run: <%=team.users[1].activities.last.distance%></p>
-              <%else%>
-              <p>No recent runs</p>
-              <%end%>
-            </div>
-          </div> <!-- sub row -->
-          <div class="row sub_row">
-            <div class="col-md-6 team_member">
-              <img src="<%=team.users[2].profile_img%>" alt="" class="img-circle team_member_image">
-              <p><%=team.users[2].firstname%> <%=team.users[2].lastname%></p>
-              <p><%=team.users[2].state%></p>
-              <% if team.users[2].activities.length > 0%>
-              <p>Last run: <%=team.users[2].activities.last.distance%></p>
-              <%else%>
-              <p>No recent runs</p>
-              <%end%>
-            </div>
-            <div class="col-md-6 team_member">
-              <img src="<%=team.users[3].profile_img%>" alt="" class="img-circle team_member_image">
-              <p><%=team.users[3].firstname%> <%=team.users[3].lastname%></p>
-              <p><%=team.users[3].state%></p>
-              <% if team.users[3].activities.length > 0%>
-              <p>Last run: <%=team.users[3].activities.last.distance%></p>
-              <%else%>
-              <p>No recent runs</p>
-              <%end%>
-            </div>
-            <div class="hidden_button"><button type="button" class="btn btn-danger">Challenge Team</button></div>
-          </div>
-        </div>
-
-        <%end%>
-
-      </div>
-
+  <form class="form_field_wrapper" role="form" action="" method="">
+    <div class="form-group">
+      <input type="text" name="" class="form-control search_teams_form" placeholder="search teams..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'search teams...'">
     </div>
+  </form>
+
+
+  <!-- just need one of these -->
+  <div class="row">
+    <% @teams.each do |team| %>
+    <div class="col-md-4 entire_team">
+      <h3><%=team.name%></h3>
+      <h5><%=team.description%></h5><br>
+
+      <div class="row sub_row">
+        <div class="col-md-6 team_member">
+          <img src="<%=team.users[0].profile_img%>" alt="" class="img-circle team_member_image">
+          <p><%=team.users[0].firstname%> <%=team.users[0].lastname%></p>
+          <p><%=team.users[0].state%></p>
+          <% if team.users[0].activities.length > 0%>
+          <p>Last run: <%=team.users[0].activities.last.distance%></p>
+          <%else%>
+          <p>No recent runs</p>
+          <%end%>
+        </div>
+        <div class="col-md-6 team_member">
+          <img src="<%=team.users[1].profile_img%>" alt="" class="img-circle team_member_image">
+          <p><%=team.users[1].firstname%> <%=team.users[1].lastname%></p>
+          <p><%=team.users[1].state%></p>
+          <% if team.users[1].activities.length > 0%>
+          <p>Last run: <%=team.users[1].activities.last.distance%></p>
+          <%else%>
+          <p>No recent runs</p>
+          <%end%>
+        </div>
+      </div> <!-- sub row -->
+      <div class="row sub_row">
+        <div class="col-md-6 team_member">
+          <img src="<%=team.users[2].profile_img%>" alt="" class="img-circle team_member_image">
+          <p><%=team.users[2].firstname%> <%=team.users[2].lastname%></p>
+          <p><%=team.users[2].state%></p>
+          <% if team.users[2].activities.length > 0%>
+          <p>Last run: <%=team.users[2].activities.last.distance%></p>
+          <%else%>
+          <p>No recent runs</p>
+          <%end%>
+        </div>
+        <div class="col-md-6 team_member">
+          <img src="<%=team.users[3].profile_img%>" alt="" class="img-circle team_member_image">
+          <p><%=team.users[3].firstname%> <%=team.users[3].lastname%></p>
+          <p><%=team.users[3].state%></p>
+          <% if team.users[3].activities.length > 0%>
+          <p>Last run: <%=team.users[3].activities.last.distance%></p>
+          <%else%>
+          <p>No recent runs</p>
+          <%end%>
+        </div>
+        <div class="hidden_button"><button type="button" class="btn btn-danger">Challenge Team</button></div>
+      </div>
+    </div>
+
+    <%end%>
+
+  </div>
+
+</div>
