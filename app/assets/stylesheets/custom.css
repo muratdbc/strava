@@ -377,6 +377,10 @@ body {
     z-index: 100;
   }
 
+  .entire_team:hover .hide_me{
+    display: none;
+  }
+
   .hidden_button button{
     display: none;
   }

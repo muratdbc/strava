@@ -1,12 +1,9 @@
 <%= render 'layouts/header'  %>
 
 <div class="non_nav">
-
-  <form class="form_field_wrapper" role="form" action="" method="">
-    <div class="form-group">
-      <input type="text" name="" class="form-control search_teams_form" placeholder="search teams..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'search teams...'">
-    </div>
-  </form>
+  <%= form_tag teams_path , :class=>"form_field_wrapper", method: "GET" do %>
+    <%= text_field_tag :query, nil, :class=>"form-control search_teams_form"%>
+  <% end %>
 
 
   <!-- just need one of these -->
@@ -59,7 +56,10 @@
           <p>No recent runs</p>
           <%end%>
         </div>
-        <div class="hidden_button"><button type="button" class="btn btn-danger">Challenge Team</button></div>
+        <div class="hidden_button">
+
+
+        <button type="button" class="btn btn-danger">Challenge Team</button></div>
       </div>
     </div>
 
