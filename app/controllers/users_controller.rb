@@ -55,11 +55,9 @@ class UsersController < ApplicationController
         end
       end
       @team_chats = @team_chats.sort_by { |chat| chat.updated_at }.reverse!
-      render :show
-    else
-
-      render :show_no_team
     end
+
+    render :show
 
 
     u=User.find(params[:id])
