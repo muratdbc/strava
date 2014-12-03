@@ -42,27 +42,25 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(current_user)
 
-    @user=User.find(params[:id])
-    p "here"
-    if @user.team
-      @team = @user.team
-    @all_team_members = @team.users
-    @teammates = @team.users.where.not(:id=> @user[:id])
-
-    @team_chats = []
-    @all_team_members.each do |person|
-      person.team_chats.each do |chat|
-        @team_chats << chat
+    if @team = @user.team
+      @all_team_members = @team.users
+      @teammates = @team.users.where.not(:id=> @user[:id])
+      
+      @team_chats = []
+      @all_team_members.each do |person|
+        person.team_chats.each do |chat|
+          @team_chats << chat
+        end
       end
-    end
-    @team_chats = @team_chats.sort_by { |chat| chat.updated_at }.reverse!
-      # @strava_teamates=@user.team.users.where.not(:id=> @user[:id]).all
-      # p @strava_teamates
-      # p "here"
+      @team_chats = @team_chats.sort_by { |chat| chat.updated_at }.reverse!
+      render :show
+    else
+
+      render :show_no_team
     end
 
-     render :show
 
     u=User.find(params[:id])
     if !u.activities
@@ -96,5 +94,6 @@ class UsersController < ApplicationController
 
     p "here"
   end
+
   end
 end
