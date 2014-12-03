@@ -5,20 +5,42 @@ class GamesController < ApplicationController
     @placeholder = 'placeholder'
     @arr =["one","two","three","four"]
 
-
-    @current_user_id = 1
-
-    @user = User.find(@current_user_id)
+    #get current user
+    @user = User.find(current_user)
+    #get users team
     @team = @user.team_id
 
+    #get the game that that team is currently in
     @game = Game.where(:team_id => @team).first || Game.where(:awayteam_id => @team).first
 
+    #find both teams (for safety) from that game
     @home_team = Team.find(@game.team_id)
     @away_team = Team.find(@game.awayteam_id)
 
-    @home_team = @home_team.users
+    #save the users as variables
+    @home_team_users = @home_team.users
+    @away_team_users = @away_team.users
 
-    # player.activities.where(created_at: @game.created_at)
+    #Find the total distance for that team
+    @home_total = 0
+    @home_activities = []
+    @home_team_users.each do |player|
+      player.activities.each do |activity|
+        #BUGBUG need to limit the activities to past week
+        @home_total += activity.distance unless activity.date_of_activity < @game.created_at
+        @home_activities << activity
+      end
+    end
+
+    @away_total = 0
+    @away_activities = []
+    @away_team_users.each do |player|
+      player.activities.each do |activity|
+        #BUGBUG same as above
+        @away_total += activity.distance unless activity.date_of_activity < @game.created_at
+        @away_activities << activity
+      end
+    end
 
     render :index
   end

@@ -44,12 +44,12 @@
 
       <div class="col-md-6 team_show">
 
-        <% @home_team.each do |player| %>
+        <% @home_team_users.each do |player| %>
 
         <div class="col-md-3 team_player team_a">
           <img src="" alt="" class="img-circle team_match_image">
           <p><%=player.firstname%> <%=player.lastname%></p>
-          <p>placeholder</p>
+          <p><%=player.city%>, <%=player.state%></p>
         </div>
 
         <%end%>
@@ -57,12 +57,12 @@
 
       <div class="col-md-6 team_show">
 
-         <% @arr.each do |placeholder| %>
+         <% @away_team_users.each do |player| %>
 
         <div class="col-md-3 team_player team_b">
           <img src="" alt="" class="img-circle team_match_image">
-          <p><%=placeholder%></p>
-          <p><%=placeholder%></p>
+          <p><%=player.firstname%> <%=player.lastname%></p>
+          <p><%=player.city%>, <%=player.state%></p>
         </div>
 
         <%end%>
@@ -76,17 +76,17 @@
     <div class="row">
 
       <div class="col-md-5 team_show team_a">
-        <h3><%=@placeholder%></h3>
+        <h3><%=@home_team.name%></h3>
       </div>
 
       <div class="col-md-2 team_show">
 
-        <h4><%=@placeholder%></h4>
+        <h4>Timer here</h4>
 
       </div>
 
       <div class="col-md-5 team_show team_b">
-        <h3><%=@placeholder%></h3>
+        <h3><%=@away_team.name%></h3>
       </div>
 
     </div>
@@ -94,13 +94,13 @@
 
     <div class="row">
       <div class="col-md-5 team_show team_a">
-        <h1><%=@placeholder%> meters</h1>
+        <h1><%=@home_total%> meters</h1>
       </div>
       <div class="col-md-2 team_show">
         <h1>VS.</h1>
       </div>
       <div class="col-md-5 team_show team_b">
-        <h1><%=@placeholder%> meters</h1>
+        <h1><%=@away_total%> meters</h1>
       </div>
     </div>
     <br><br><br>
@@ -111,9 +111,9 @@
 
       <div class="col-md-4 team_show team_a">
         <ul class="list-group">
-          <% @arr.each do |placeholder| %>
+          <% @home_activities.each do |activity| %>
 
-          <li class="list-group-item"><%=placeholder%> ran <%=placeholder%> miles <a href="" data-lightbox="team_a_maps" data-title="<%=placeholder%> ran <%=placeholder%> miles"><span class="glyphicon glyphicon-map-marker"></span> </a></li>
+          <li class="list-group-item"><%=activity.user.firstname%> <%=activity.user.firstname%> ran <%=activity.distance%> meters <a href="" data-lightbox="team_a_maps" data-title="<%=activity.user.firstname%> <%=activity.user.firstname%> ran <%=activity.distance%> meters"><span class="glyphicon glyphicon-map-marker"></span> </a></li>
 
           <%end%>
         </ul>
@@ -160,9 +160,9 @@
 
       <div class="col-md-4 team_show team_b">
         <ul class="list-group">
-          <% @arr.each do |placeholder| %>
+          <% @away_activities.each do |activity| %>
 
-          <li class="list-group-item"><%=placeholder%> ran <%=placeholder%> miles <a href="" data-lightbox="team_b_maps" data-title="=placeholder%> ran <%=placeholder%> miles"><span class="glyphicon glyphicon-map-marker"></span> </a></li>
+          <li class="list-group-item"><%=activity.user.firstname%> <%=activity.user.firstname%> ran <%=activity.distance%> meters <a href="" data-lightbox="team_a_maps" data-title="<%=activity.user.firstname%> <%=activity.user.firstname%> ran <%=activity.distance%> meters"><span class="glyphicon glyphicon-map-marker"></span> </a></li>
 
           <%end%>
         </ul>
