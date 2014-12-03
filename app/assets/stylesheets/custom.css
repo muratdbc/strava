@@ -215,6 +215,10 @@ body {
 
 /* ******** Team Chat **********/
 
+#team_chat_template {
+  display: none;
+}
+
 .team_chat_wrapper {
   width: 100%;
   margin-top: 40px;

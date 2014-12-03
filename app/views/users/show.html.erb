@@ -27,22 +27,84 @@
 
 </nav>
 
+
 <div class="non_nav">
 
   <div class="row">
+    <%= render 'user_sidebar' %>
 
-    <div class="col-md-4 user_information">
-      <img src="<%=@strava_picture%>" alt="" class="img-circle profile_picture">
-      <h3><%=@user.strava_name%></h3>
-      <h4><%=@user.firstname%> <%=@user.lastname%></h4>
-      <h4><%=@user.email%></h4>
-      <hr>
-      <h5><%= total_distance(@user) %> miles run</h5>  <!-- not implemented -->
-      <h5><%=@user.city%>, <%=@user.state%></h5>
-      <br>
-      <a href="/logout"><button type="button" class="btn btn-default">Log Out</button></a>
+
+    <div class="col-md-8 team_information">
+      <h1><%=@team.name%></h1>
+      <h3><%=@team.description%></h3>
+      <div class="row">
+
+        <% @teammates.each do |teammate| %>
+        <div class="col-md-4">
+          <img src="images/bg2.jpg" alt="" class="img-circle team_picture">
+          <div>
+            <h6><%=teammate.strava_name%></h6>
+            <h6><%=teammate.firstname%> <%=teammate.lastname%></h6>
+            <h6><%=total_distance(teammate) %> miles run</h6> <!-- not implemented -->
+          </div>
+        </div>
+        <% end %>
+
+      <div class="team_stats">
+        <p><%= total_distance_team(@all_team_members) %> total miles run || <%=@team.total_wins%> - <%=@team.total_losses%> record</p> <!-- not implemented -->
+        </div>
+        <div class="team_messages">
+        </div>
+
+        <div class="team_chat_wrapper">
+
+          <div class="title_box">
+            <label>Team Chat</label>
+          </div>
+          <div class="actionBox">
+
+
+
+
+    
+        <%= form_for :team_chat, url: team_chats_path, remote: true, html: {class: "nifty_form"} do |f| %>
+          <%= f.text_field :content %>
+          <%= f.submit %>
+        <% end %>
+
+
+       
+
+        <!--     <form id="team_chat_form" class="form-inline" role="form" accept-charset="UTF-8" action="/team_chats" method="post">
+              <div class="form-group">
+                <input id="article_title" class="form-control" name="team_chats[content]" type="text" />
+              </div>
+              <div class="form-group">
+                <input name="commit" type="submit" value="Create" class="btn btn-default" />
+              </div>
+            </form> -->
+
+            <ul id="team_chat_target" class="commentList">
+              <% @team_chats.each do |chat| %>
+              <li>
+                <div class="commenterImage">
+                  <img src="<%=chat.user.profile_img%>" />
+                </div>
+                <div class="commentText">
+                  <p class=""><%=chat.content%></p> <span class="date sub-text"><%=chat.updated_at%></span>
+                </div>
+              </li>
+              <%end%>
+
+              <%= render 'team_chat_template' %>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
 
 
   </div> <!-- non nav -->
+
+</div>
 
