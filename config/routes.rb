@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   
   resources :team_chats, only: [:new, :create]
 
+  get 'logout' , to: 'logout#destroy'
+
 
   # /get 'strava_auth_url', to :
   # get "welcomes" => 'welcome'
