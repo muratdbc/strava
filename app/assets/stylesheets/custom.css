@@ -364,22 +364,37 @@ body {
     border-radius: 10px;
   }
 
-  .entire_team:hover {
+  .entire_team:hover .team_member{
     opacity: .6;
-    background-color: black;
-    transform: scale(1.05);
-    transition: all 0.2s ease-in-out;
+/*    background-color: black;
+*/    transform: scale(0.3);
+    transition: all 0.5s ease-in-out;
   }
 
-  .entire_team:hover .hidden_button button{
+  .entire_team:hover .hidden_button1{
     position: absolute;
-    display: table;
+    display: block;
+    width: 87%;
     z-index: 100;
+    bottom: 45.5%;
   }
 
-  .hidden_button button{
+   .entire_team:hover .hidden_button2{
+    position: absolute;
+    display: block;
+    width: 87%;
+    z-index: 100;
+    bottom: 34%;
+  }
+
+  .hidden_button1{
     display: none;
   }
+
+  .hidden_button2{
+    display: none;
+  }
+
 
   .team_member {
     text-align: center;
