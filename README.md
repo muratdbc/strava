@@ -63,7 +63,7 @@ ___
 
 ### Schema
 
-![alt text](stravsschema.png "Schema Design")
+![alt text](schema.png "Schema Design")
 
 ___
 
