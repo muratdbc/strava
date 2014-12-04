@@ -15,7 +15,7 @@ Game.create(:name => "Face-off!", :description => "The winning or losing team mu
 
 
 jeremy = ['JRock', 'Sabat', 'jeremysabat@gmail.com', 'SF', 'CA', 'M', 'http://dgalywyr863hv.cloudfront.net/pictures/athletes/7183762/2183281/3/large.jpg', '50f365eddf514cc68c02daf2e8bac40aff13f1a7', '7183762', '1']
-shirley = ['Shirley', 'Shaw', 'shirleyshaw.is@gmail.com', 'SF', 'CA', 'F', 'http://dgalywyr863hv.cloudfront.net/pictures/athletes/7176220/2184762/1/large.jpg"', 'fd32c62d76dd12eadfb4d2a17cf19c2598e2318a', '7176220', '1']
+shirley = ['Shirley', 'Shaw', 'shirleyshaw.is@gmail.com', 'SF', 'CA', 'F', 'http://dgalywyr863hv.cloudfront.net/pictures/athletes/7176220/2184762/1/large.jpg', 'fd32c62d76dd12eadfb4d2a17cf19c2598e2318a', '7176220', '1']
 murat = ['Murat', 'Gocmen', 'Murat.dbc@gmail.com', 'SF', 'CA', 'M', 'http://dgalywyr863hv.cloudfront.net/pictures/athletes/7187014/2174487/1/large.jpg', 'de99b2f1890d6490d7a19a24f65a0c88cf04d506', '7187014', '1']
 ethan = ['Ethan', 'Spiro', 'ethanspiro@gmail.com', 'SF', 'CA', 'M', 'http://dgalywyr863hv.cloudfront.net/pictures/athletes/7175460/2182838/1/large.jpg', '255dfb79ccae694aa17c9b1007526cbcef0b73c1', '7175460', '1']
 tim = ['Tim', 'Sabat', 'timothy.sabat@gmail.com', 'Bend', 'OR', 'M', 'http://dgalywyr863hv.cloudfront.net/pictures/athletes/148007/1091463/2/large.jpg', '89cd44ccfd2e9f3d28be983edaa1262ab283a56d', '148007', '2']
