@@ -36,13 +36,11 @@
             <div class="actionBox">
 
 
-
-
-
           <%= form_for :team_chat, url: team_chats_path, remote: true,  html: { id: "chat",:'data-type' => 'json'} do |f| %>
+
             <%= f.text_field :content %>
             <%= f.hidden_field :user_id, :value => @user.id %>
-            <%= f.submit %>
+            <%= f.submit :class=>"btn-form-custom" %>
           <% end %>
 
 
@@ -64,10 +62,13 @@
                     <img src="<%=chat.user.profile_img%>" />
                   </div>
                   <div class="commentText">
-                    <p class=""><%=chat.content%></p> <span class="date sub-text"><%=chat.updated_at%></span>
+                    <p class="green_font"><%=chat.content%></p> <span class="date sub-text"><%=chat.updated_at%></span>
+                 
                   </div>
                 </li>
+                
                 <%end%>
+
 
                 <%= render 'team_chat_template' %>
               </ul>
