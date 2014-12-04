@@ -1,4 +1,8 @@
 require 'faker'
+require 'uri'
+
+google_uri_builder = 'https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&path=enc:'
+
 
 Team.create(:name => "test team 1", :description => "team 1 description", :location => "team 1 location", :total_wins => 3, :total_losses => 5)
 Team.create(:name => "test team 2", :description => "team 2 description", :location => "team 2 location", :total_wins => 3, :total_losses => 5)
@@ -30,7 +34,7 @@ end
 end
 
 50.times do
-  Activity.create(:user_id => User.all.sample.id, :map_polyline => "https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&key=#{ENV['GOOGLEAPI']}", :distance => Random.rand(200), :date_of_activity => Faker::Date.forward(7))
+  Activity.create(:user_id => User.all.sample.id, :map_polyline => URI.escape(google_uri_builder + "cepcF~gshVaI`RiTj[gUpg@wPtYN`LqsKbnP_i@`q@{o@tdAa[h[}_Ahv@ap@l[}aBhkBmRdb@qoBhlGoh@pz@j@JaHlDkz@b_AmcAxs@{cAzd@yv@b@uUmBkQ{Gu`@aZkcBm`BuLiGcKqAgP`D{hA~z@yWfI}Lv@a_B_@{zAu]uhDsV_xBre@kOuCyL{N\\uA" + "&key=#{ENV['GOOGLEAPI']}"), :distance => Random.rand(200), :date_of_activity => Faker::Date.forward(7))
 end
 
 30.times do

@@ -95,7 +95,7 @@
       <ul class="list-group">
         <% @home_activities.each do |activity| %>
 
-        <li class="list-group-item"><%=activity.user.firstname%> <%=activity.user.lastname%> ran <%=activity.distance%> meters <a href="" data-lightbox="team_a_maps" data-title="<%=activity.user.firstname%> <%=activity.user.firstname%> ran <%=activity.distance%> meters"> <i class="fa fa-map-marker"></i></a></li>
+        <li class="list-group-item"><%=activity.user.firstname%> <%=activity.user.lastname%> ran <%=activity.distance%> meters <a href="<%=activity.map_polyline%>"> <i class="fa fa-map-marker"></i></a></li>
 
         <%end%>
       </ul>

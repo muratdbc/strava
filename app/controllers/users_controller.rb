@@ -80,7 +80,7 @@ class UsersController < ApplicationController
     #if the user does not have a team pull only the user data from Strava
     now=Date.today
     p week_start_unix = now.at_beginning_of_week.to_time.to_i
-    google_uri_builder = 'https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&key=AIzaSyCZOcgiu-KmKZjDBAvT9GbK46JJhjXgQJw&path=enc:'
+    google_uri_builder = 'https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&path=enc:'
 
     if (!@user.team)
       user_strava_data=HTTParty.get("https://www.strava.com/api/v3/athlete/activities", headers: {"Authorization" => "Bearer #{@user.token}"},query: {:after => week_start_unix})
@@ -96,7 +96,7 @@ class UsersController < ApplicationController
             if  active["id"]>@user.activities.last.activityid
               act.activityid= active["id"]
               act.user_id= @user.id
-              act.map_polyline= URI.escape(google_uri_builder + active["map"]["summary_polyline"])
+              act.map_polyline= URI.escape(google_uri_builder + active["map"]["summary_polyline"] + "&key=#{ENV['GOOGLEAPI']}")
               act.distance= active["distance"]
               act.save
             end
@@ -108,7 +108,7 @@ class UsersController < ApplicationController
             p "in the else before the user act. count"
              p @user.activities.count
                if (active["id"]>@user.activities.last.activityid )
-                 @user.activities.create(activityid: active["id"] ,user_id: @user.id,map_polyline: active["map"]["summary_polyline"], distance: active["distance"])
+                 @user.activities.create(activityid: active["id"] ,user_id: @user.id,map_polyline: URI.escape(google_uri_builder + active["map"]["summary_polyline"] + "&key=#{ENV['GOOGLEAPI']}"), distance: active["distance"])
                end
           end
         end
