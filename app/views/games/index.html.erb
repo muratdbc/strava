@@ -130,7 +130,7 @@
 
 
         <ul id="trashtalklist" class="commentList">
-          <% @game.trash_talks.each do |trashtalk| %>
+          <% @game.trash_talks.order("created_at DESC").each do |trashtalk| %>
           <li>
             <div class="commenterImage">
               <img src=<%=trashtalk.user.profile_img %> />
