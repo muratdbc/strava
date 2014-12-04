@@ -1,7 +1,7 @@
 require 'faker'
 require 'uri'
 
-google_uri_builder = 'https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&path=enc:'
+google_uri_builder = 'https://maps.googleapis.com/maps/api/staticmap?size=600x600&sensor=false&path=enc:'
 
 
 Team.create(:name => "test team 1", :description => "team 1 description", :location => "team 1 location", :total_wins => 3, :total_losses => 5)

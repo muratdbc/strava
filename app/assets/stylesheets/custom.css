@@ -352,6 +352,11 @@ body {
     font-family: "Lobster";
     letter-spacing: 5px;
   }
+
+  .modal-body img{
+    width: 100%;
+    margin: auto;
+  }
   /*============================== TEAMS PAGE ============================== */
 
   .form_field_wrapper {
