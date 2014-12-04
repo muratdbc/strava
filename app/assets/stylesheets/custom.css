@@ -311,22 +311,11 @@ body {
   /*============================== CURRENT MATCH ============================== */
 
   .btn-form-custom {
-  background-color: hsl(37, 100%, 37%) !important;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FC4C02", endColorstr="#FC4C02");
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#FC4C02), to(#FC4C02));
-  background-image: -moz-linear-gradient(top, #FC4C02, #FC4C02);
-  background-image: -ms-linear-gradient(top, #FC4C02, #FC4C02);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FC4C02), color-stop(100%, #FC4C02));
-  background-image: -webkit-linear-gradient(top, #FC4C02, #FC4C02);
-  background-image: -o-linear-gradient(top, #FC4C02, #FC4C02);
-  background-image: linear-gradient(#FC4C02, #FC4C02);
-  border-color: #FC4C02 #FC4C02 hsl(37, 100%, 32%);
+  background-color:#FC4C02;
+  border-color: #FC4C02;
   color: #fff !important;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
-  -webkit-font-smoothing: antialiased;
   font-family: "Lobster";
-  font-size: 16px;
+  font-size: 15px;
   }
 
   .green_font{
