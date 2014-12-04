@@ -1,49 +1,97 @@
 require 'faker'
 require 'uri'
 
+
 google_uri_builder = 'https://maps.googleapis.com/maps/api/staticmap?size=600x600&sensor=false&path=enc:'
 
 
-Team.create(:name => "test team 1", :description => "team 1 description", :location => "team 1 location", :total_wins => 3, :total_losses => 5)
-Team.create(:name => "test team 2", :description => "team 2 description", :location => "team 2 location", :total_wins => 3, :total_losses => 5)
-Team.create(:name => "test team 3", :description => "team 3 description", :location => "team 3 location", :total_wins => 3, :total_losses => 5)
-Team.create(:name => "test team 4", :description => "team 4 description", :location => "team 4 location", :total_wins => 3, :total_losses => 5)
 
-# GameInvite.create(:team_id => 1, :invite_from_id => 2)
-# GameInvite.create(:team_id => 3, :invite_from_id => 4)
+# Seed real users
 
-Game.create(:name => "first test game", :description => "first game description", :team_id => 1, :awayteam_id => 2)
-Game.create(:name => "second test game", :description => "second game description", :team_id => 3, :awayteam_id => 4)
+Team.create(:name => "DBC StraVS. Supreme", :description => "All your base are belong to us", :location => "San Francisco", :total_wins => 30502, :total_losses => 0)
+Team.create(:name => "Challenge Squad", :description => "We eat exercise for breakfast", :location => "Scattered", :total_wins => 5, :total_losses => 0)
 
-4.times do
-  User.create(:strava_name => Faker::Lorem.word, :firstname => Faker::Name.first_name, :lastname => Faker::Name.last_name, :email => Faker::Internet.email, :city => Faker::Address.city, :state => Faker::Address.state, :sex => "M",
-    :profile_img => Faker::Avatar.image, :token => '61991c295e6ee0223e8ac779c80bd9edf980571a', :strava_id => Faker::Number.number(4), :team_id => 1)
-end
+Game.create(:name => "Face-off!", :description => "The winning or losing team must buy me a burrito.  With french fries inside.", :team_id => 1, :awayteam_id => 2)
 
-4.times do
-  User.create(:strava_name => Faker::Lorem.word, :firstname => Faker::Name.first_name, :lastname => Faker::Name.last_name, :email => Faker::Internet.email, :city => Faker::Address.city, :state => Faker::Address.state, :sex => "M",
-    :profile_img => Faker::Avatar.image, :token => '50f365eddf514cc68c02daf2e8bac40aff13f1a7', :strava_id => Faker::Number.number(4), :team_id => 2)
-end
-4.times do
-  User.create(:strava_name => Faker::Lorem.word, :firstname => Faker::Name.first_name, :lastname => Faker::Name.last_name, :email => Faker::Internet.email, :city => Faker::Address.city, :state => Faker::Address.state, :sex => "M",
-    :profile_img => Faker::Avatar.image, :token => '255dfb79ccae694aa17c9b1007526cbcef0b73c1', :strava_id => Faker::Number.number(4), :team_id => 3)
-end
-4.times do
-  User.create(:strava_name => Faker::Lorem.word, :firstname => Faker::Name.first_name, :lastname => Faker::Name.last_name, :email => Faker::Internet.email, :city => Faker::Address.city, :state => Faker::Address.state, :sex => "M",
-    :profile_img => Faker::Avatar.image, :token => 'fd32c62d76dd12eadfb4d2a17cf19c2598e2318a', :strava_id => Faker::Number.number(4), :team_id => 4)
-end
 
-50.times do
-  Activity.create(:user_id => User.all.sample.id, :map_polyline => URI.escape(google_uri_builder + "cepcF~gshVaI`RiTj[gUpg@wPtYN`LqsKbnP_i@`q@{o@tdAa[h[}_Ahv@ap@l[}aBhkBmRdb@qoBhlGoh@pz@j@JaHlDkz@b_AmcAxs@{cAzd@yv@b@uUmBkQ{Gu`@aZkcBm`BuLiGcKqAgP`D{hA~z@yWfI}Lv@a_B_@{zAu]uhDsV_xBre@kOuCyL{N\\uA" + "&key=#{ENV['GOOGLEAPI']}"), :distance => Random.rand(200), :date_of_activity => Faker::Date.forward(7))
+jeremy = ['JRock', 'Sabat', 'jeremysabat@gmail.com', 'SF', 'CA', 'M', 'http://dgalywyr863hv.cloudfront.net/pictures/athletes/7183762/2183281/3/large.jpg', '50f365eddf514cc68c02daf2e8bac40aff13f1a7', '7183762', '1']
+shirley = ['Shirley', 'Shaw', 'shirleyshaw.is@gmail.com', 'SF', 'CA', 'F', 'http://dgalywyr863hv.cloudfront.net/pictures/athletes/7176220/2184762/1/large.jpg"', 'fd32c62d76dd12eadfb4d2a17cf19c2598e2318a', '7176220', '1']
+murat = ['Murat', 'Gocmen', 'Murat.dbc@gmail.com', 'SF', 'CA', 'M', 'http://dgalywyr863hv.cloudfront.net/pictures/athletes/7187014/2174487/1/large.jpg', 'de99b2f1890d6490d7a19a24f65a0c88cf04d506', '7187014', '1']
+ethan = ['Ethan', 'Spiro', 'ethanspiro@gmail.com', 'SF', 'CA', 'M', 'http://dgalywyr863hv.cloudfront.net/pictures/athletes/7175460/2182838/1/large.jpg', '255dfb79ccae694aa17c9b1007526cbcef0b73c1', '7175460', '1']
+tim = ['Tim', 'Sabat', 'timothy.sabat@gmail.com', 'Bend', 'OR', 'M', 'http://dgalywyr863hv.cloudfront.net/pictures/athletes/148007/1091463/2/large.jpg', '89cd44ccfd2e9f3d28be983edaa1262ab283a56d', '148007', '2']
+julian = ['Julian', 'TheBossMan', 'jugalleg22@yahoo.com', 'SF', 'CA', 'M', 'http://dgalywyr863hv.cloudfront.net/pictures/athletes/3819511/1228892/1/large.jpg', '61991c295e6ee0223e8ac779c80bd9edf980571a', '3819511', '2']
+alex = ['Alex', 'Vasquez', 'alex.quez@gmail.com', 'SF', 'CA', 'M', 'http://dgalywyr863hv.cloudfront.net/pictures/athletes/3495784/2184831/2/large.jpg', 'd8c170174683a2f8927c26241ec7aefb7adb96a4', '3495784', '2']
+chris = ['Chris', 'Dubois', 'chris.dubois@gmail.com', 'Portland', 'OR', 'M', 'http://dgalywyr863hv.cloudfront.net/pictures/athletes/773873/2184793/2/large.jpg', 'e55d97c7864f3d3830583de1e861b5b0a5cc5237', '773873', '2']
+
+people = [jeremy, shirley, murat, ethan, tim, julian, chris, alex]
+maps = ["https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&path=enc:cepcF~gshVaI%60RiTj[gUpg@wPtYN%60LqsKbnP_i@%60q@%7Bo@tdAa[h[%7D_Ahv@ap@l[%7DaBhkBmRdb@qoBhlGoh@pz@j@JaHlDkz@b_AmcAxs@%7BcAzd@yv@b@uUmBkQ%7BGu%60@aZkcBm%60BuLiGcKqAgP%60D%7BhA~z@yWfI%7DLv@a_B_@%7BzAu]uhDsV_xBre@kOuCyL%7BN%5CuA&key=AIzaSyBS2RujomwKfUyYQveDnGglYovtUDDJLwA", "https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&path=enc:mnmeFfx_jV%60d@pArdDrVluAh%5Er%7CAt@zRiA%60VgG%7ChAo%7B@%60IyCbMc@~UvJ~cBfaBp[rU%60TlIdTdCjw@QdcA%7Bd@hcAct@teAsdA%7C@iDhOwM~GgKb%7BByfHjGcQxLoThh@_l@jiA%7BfAnRgH%7CPkLloAifAru@mlA~kAa_B%60vBcgCpu@goArJuTn%7DBgeElLoXfN_S%7CZul@&key=AIzaSyBS2RujomwKfUyYQveDnGglYovtUDDJLwA", "https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&path=enc:eeqeFli%60jVCrBJyB%7BCY%7DEfHyJeN_Ub%5CyEiC&key=AIzaSyBS2RujomwKfUyYQveDnGglYovtUDDJLwA", "https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&path=enc:gyreFf%7D%60jVeG%7CCp@fDnBh@kFzG%7BAnGsEr@%60F%7CDw@rAr@%7D@qAqDkB%5Ea@yArBp[%7BFrI~BhDlGp@y@%7CIdG~s@%60@tg@jNn~AbFv_AZfMqCL&key=AIzaSyBS2RujomwKfUyYQveDnGglYovtUDDJLwA", "https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&path=enc:ep%7DkGpclcVdJb@fXlYzDyHtBpA&key=AIzaSyBS2RujomwKfUyYQveDnGglYovtUDDJLwA", "https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&path=enc:%7Bc%7CkGxulcVbBjCwDjIi@a@&key=AIzaSyBS2RujomwKfUyYQveDnGglYovtUDDJLwA", "https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&path=enc:e%7CreFtl%60jVu@jCaD_D%7B]eg@zReIj%7C@v@mBgAeWhB__@%7BAiGp@%7BKtGrXn]o@r@bGdI&key=AIzaSyBS2RujomwKfUyYQveDnGglYovtUDDJLwA", "https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&path=enc:qzreF~l%60jVLeAcBlGkEaCcAgEmKcMg@%7DCuGsDV%7B@mC%7DBeAsEvPaIpa@hAfW_BbDdB%60EjMrBeBCuKrAi@eA%60ARjJyC%7CBiEmN%7DA%7D@%7BUfAy%60@oAuTrIta@fl@~DiGc@vB&key=AIzaSyBS2RujomwKfUyYQveDnGglYovtUDDJLwA", "https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&path=enc:m%7CreFvm%60jVn@KoBvB%7BA%7DA%7B_@gi@rMyH~d@bAlXeBzBpAzDrNvCwBfSm@cXrCeEaNoCqAqP~Ail@k@sMtHpa@hj@xBR&key=AIzaSyBS2RujomwKfUyYQveDnGglYovtUDDJLwA"]
+
+people.each do |person|
+  User.create(:firstname => person[0], :lastname => person[1], :email => person[2], :city => person[3], :state => person[4], :sex => person[5],
+    :profile_img => person[6], :token => person[7], :strava_id => person[8], :team_id => person[9])
 end
 
 30.times do
+  Activity.create(:user_id => User.all.sample.id, :map_polyline => maps.sample, :distance => Random.rand(200), :date_of_activity => Faker::Date.forward(7))
+end
+
+15.times do
   TeamChat.create(:content => Faker::Lorem.sentence, :user_id => User.all.sample.id)
 end
 
-30.times do
+15.times do
   TrashTalk.create(:game_id => Game.all.sample.id, :user_id => User.all.sample.id, :content => Faker::Lorem.sentence)
 end
+
+
+
+
+
+
+# Robot seed data
+
+# google_uri_builder = 'https://maps.googleapis.com/maps/api/staticmap?size=600x600&sensor=false&path=enc:'
+
+# Team.create(:name => "test team 1", :description => "team 1 description", :location => "team 1 location", :total_wins => 3, :total_losses => 5)
+# Team.create(:name => "test team 2", :description => "team 2 description", :location => "team 2 location", :total_wins => 3, :total_losses => 5)
+# Team.create(:name => "test team 3", :description => "team 3 description", :location => "team 3 location", :total_wins => 3, :total_losses => 5)
+# Team.create(:name => "test team 4", :description => "team 4 description", :location => "team 4 location", :total_wins => 3, :total_losses => 5)
+
+        # # GameInvite.create(:team_id => 1, :invite_from_id => 2)
+        # # GameInvite.create(:team_id => 3, :invite_from_id => 4)
+
+# Game.create(:name => "first test game", :description => "first game description", :team_id => 1, :awayteam_id => 2)
+# Game.create(:name => "second test game", :description => "second game description", :team_id => 3, :awayteam_id => 4)
+
+# 4.times do
+#   User.create(:strava_name => Faker::Lorem.word, :firstname => Faker::Name.first_name, :lastname => Faker::Name.last_name, :email => Faker::Internet.email, :city => Faker::Address.city, :state => Faker::Address.state, :sex => "M",
+#     :profile_img => Faker::Avatar.image, :token => '61991c295e6ee0223e8ac779c80bd9edf980571a', :strava_id => Faker::Number.number(4), :team_id => 1)
+# end
+
+# 4.times do
+#   User.create(:strava_name => Faker::Lorem.word, :firstname => Faker::Name.first_name, :lastname => Faker::Name.last_name, :email => Faker::Internet.email, :city => Faker::Address.city, :state => Faker::Address.state, :sex => "M",
+#     :profile_img => Faker::Avatar.image, :token => '50f365eddf514cc68c02daf2e8bac40aff13f1a7', :strava_id => Faker::Number.number(4), :team_id => 2)
+# end
+# 4.times do
+#   User.create(:strava_name => Faker::Lorem.word, :firstname => Faker::Name.first_name, :lastname => Faker::Name.last_name, :email => Faker::Internet.email, :city => Faker::Address.city, :state => Faker::Address.state, :sex => "M",
+#     :profile_img => Faker::Avatar.image, :token => '255dfb79ccae694aa17c9b1007526cbcef0b73c1', :strava_id => Faker::Number.number(4), :team_id => 3)
+# end
+# 4.times do
+#   User.create(:strava_name => Faker::Lorem.word, :firstname => Faker::Name.first_name, :lastname => Faker::Name.last_name, :email => Faker::Internet.email, :city => Faker::Address.city, :state => Faker::Address.state, :sex => "M",
+#     :profile_img => Faker::Avatar.image, :token => 'fd32c62d76dd12eadfb4d2a17cf19c2598e2318a', :strava_id => Faker::Number.number(4), :team_id => 4)
+# end
+
+# 50.times do
+#   Activity.create(:user_id => User.all.sample.id, :map_polyline => URI.escape(google_uri_builder + "cepcF~gshVaI`RiTj[gUpg@wPtYN`LqsKbnP_i@`q@{o@tdAa[h[}_Ahv@ap@l[}aBhkBmRdb@qoBhlGoh@pz@j@JaHlDkz@b_AmcAxs@{cAzd@yv@b@uUmBkQ{Gu`@aZkcBm`BuLiGcKqAgP`D{hA~z@yWfI}Lv@a_B_@{zAu]uhDsV_xBre@kOuCyL{N\\uA" + "&key=#{ENV['GOOGLEAPI']}"), :distance => Random.rand(200), :date_of_activity => Faker::Date.forward(7))
+# end
+
+# 30.times do
+#   TeamChat.create(:content => Faker::Lorem.sentence, :user_id => User.all.sample.id)
+# end
+
+# 30.times do
+#   TrashTalk.create(:game_id => Game.all.sample.id, :user_id => User.all.sample.id, :content => Faker::Lorem.sentence)
+# end
 
 
 
