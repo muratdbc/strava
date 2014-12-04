@@ -8,6 +8,8 @@ class TeamChatsController < ApplicationController
     chat = user.team_chats.create(team_chat_params)
     respond_to do |format|
       format.json{ render :json => chat.to_json(:include => :user) }
+
+
     end
   end
 
