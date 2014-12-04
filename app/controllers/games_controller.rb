@@ -28,21 +28,28 @@ class GamesController < ApplicationController
         @home_activities = []
         @home_team_users.each do |player|
           player.activities.each do |activity|
-            #BUGBUG need to limit the activities to past week
-            @home_total += activity.distance unless activity.date_of_activity < @game.created_at
-            @home_activities << activity
+            unless activity.date_of_activity < @game.created_at
+                @home_total += activity.distance
+                @home_activities << activity
+            end
           end
         end
+        
+        @home_activities.sort_by! { |activity| activity.date_of_activity }.reverse!
 
         @away_total = 0
         @away_activities = []
         @away_team_users.each do |player|
           player.activities.each do |activity|
-            #BUGBUG same as above
-            @away_total += activity.distance unless activity.date_of_activity < @game.created_at
-            @away_activities << activity
+            unless activity.date_of_activity < @game.created_at
+                @away_total += activity.distance
+                @away_activities << activity
+            end
           end
         end
+
+        @away_activities.sort_by! { |activity| activity.date_of_activity }.reverse!
+
 
         @end_time = @game.created_at + 7.days
     end
