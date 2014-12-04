@@ -34,7 +34,7 @@ class GamesController < ApplicationController
             end
           end
         end
-        
+
         @home_activities.sort_by! { |activity| activity.date_of_activity }.reverse!
 
         @away_total = 0
