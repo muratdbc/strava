@@ -5,7 +5,7 @@
 <%= render 'layouts/header'  %>
 
 <div class="non_nav">
-<% if @game %>
+  <% if @game %>
   <div class="current_match_header">
     <h1><%=@game.name%></h1>
     <h4><%=@game.description%></h2>
@@ -95,62 +95,109 @@
       <ul class="list-group">
         <% @home_activities.each do |activity| %>
 
-        <li class="list-group-item"><%=activity.user.firstname%> <%=activity.user.lastname%> ran <%=activity.distance%> meters <a href="<%=activity.map_polyline%>"> <i class="fa fa-map-marker"></i></a></li>
+        <li class="list-group-item"><%=activity.user.firstname%> <%=activity.user.lastname%> ran <%=activity.distance%> meters <a href="" data-toggle="modal" data-target="#myModal"> <i class="fa fa-map-marker"></i></a></li>
+
+        <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <img src="<%=activity.map_polyline%>" class="img-responsive">
+              </div>
+            </div>
+          </div>
+        </div>
 
         <%end%>
       </ul>
     </div>
+<!--
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Popup image</button>
 
-    <!-- ***** Talk shit forum ***** -->
-
-    <div class="col-md-4 team_show">
-
-      <div class="title_box">
-        <label>Talk Shit</label>
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <img src="//placehold.it/1000x600" class="img-responsive">
+          </div>
+        </div>
       </div>
+    </div> -->
 
-      <div class="actionBox">
+    <script>
+    function centerModal() {
+      $(this).css('display', 'block');
+      var $dialog = $(this).find(".modal-dialog");
+      var offset = ($(window).height() - $dialog.height()) / 2;
+    // Center modal vertically in window
+    $dialog.css("margin-top", offset);
+  }
+  $('.modal').on('show.bs.modal', centerModal);
+  $(window).on("resize", function () {
+    $('.modal:visible').each(centerModal);
+  });
 
+  </script>
 
-          <%= form_for :trash_talk, format: :json, url: trash_talks_path, remote: true,  html: { id: "trashtalk"} do |f| %>
-            <%= f.text_field :content %>
-            <%= f.hidden_field :user_id, :value => @user.id %>
-            <%= f.hidden_field :game_id, :value => @game.id %>
-            <%= f.submit %>
-          <% end %>
+  <!-- ***** Talk shit forum ***** -->
 
+  <div class="col-md-4 team_show">
 
-        <ul class="commentList">
-          <% @game.trash_talks.order("created_at DESC").each do |trashtalk| %>
-          <li>
-            <div class="commenterImage">
-              <img src=<%=@user.profile_img %> />
-            </div>
-            <div class="commentText">
-              <p class=""><%=trashtalk.content%></p> <span class="date sub-text"><%=trashtalk.created_at%></span>
-            </div>
-          </li>
-          <%end%>
-          <%= render 'trash_talk_template' %>
-        </ul>
-      </div> <!-- actin box ends -->
+    <div class="title_box">
+      <label>Talk Shit</label>
     </div>
 
+    <div class="actionBox">
 
-    <!-- ***** Team B run logs ***** -->
 
-    <div class="col-md-4 team_show team_b">
+      <%= form_for :trash_talk, format: :json, url: trash_talks_path, remote: true,  html: { id: "trashtalk"} do |f| %>
+      <%= f.text_field :content %>
+      <%= f.hidden_field :user_id, :value => @user.id %>
+      <%= f.hidden_field :game_id, :value => @game.id %>
+      <%= f.submit %>
+      <% end %>
+
+
+      <ul class="commentList">
+        <% @game.trash_talks.order("created_at DESC").each do |trashtalk| %>
+        <li>
+          <div class="commenterImage">
+            <img src=<%=@user.profile_img %> />
+          </div>
+          <div class="commentText">
+            <p class=""><%=trashtalk.content%></p> <span class="date sub-text"><%=trashtalk.created_at%></span>
+          </div>
+        </li>
+        <%end%>
+        <%= render 'trash_talk_template' %>
+      </ul>
+    </div> <!-- actin box ends -->
+  </div>
+
+
+  <!-- ***** Team B run logs ***** -->
+
+  <div class="col-md-4 team_show team_b">
       <ul class="list-group">
         <% @away_activities.each do |activity| %>
 
-        <li class="list-group-item"><%=activity.user.firstname%> <%=activity.user.lastname%> ran <%=activity.distance%> meters <a href="" data-lightbox="team_a_maps" data-title="<%=activity.user.firstname%> <%=activity.user.firstname%> ran <%=activity.distance%> meters"> <i class="fa fa-map-marker"></i></span> </a></li>
+        <li class="list-group-item"><%=activity.user.firstname%> <%=activity.user.lastname%> ran <%=activity.distance%> meters <a href="" data-toggle="modal" data-target="#myModal"> <i class="fa fa-map-marker"></i></a></li>
+
+        <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <img src="<%=activity.map_polyline%>" class="img-responsive">
+              </div>
+            </div>
+          </div>
+        </div>
 
         <%end%>
       </ul>
     </div>
 
-  </div>
+</div>
 <% else %>
-  <h3>Not in a game</h3>
+<h3>Not in a game</h3>
 <% end %>
 </div>

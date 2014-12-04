@@ -80,7 +80,7 @@ class UsersController < ApplicationController
     #if the user does not have a team pull only the user data from Strava
     now=Date.today
     p week_start_unix = now.at_beginning_of_week.to_time.to_i
-    google_uri_builder = 'https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&path=enc:'
+    google_uri_builder = 'https://maps.googleapis.com/maps/api/staticmap?size=600x600&sensor=false&path=enc:'
 
     if (!@user.team)
       user_strava_data=HTTParty.get("https://www.strava.com/api/v3/athlete/activities", headers: {"Authorization" => "Bearer #{@user.token}"},query: {:after => week_start_unix})
