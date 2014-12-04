@@ -5,7 +5,7 @@
 <%= render 'layouts/header'  %>
 
 <div class="non_nav">
-<% if @game %>
+  <% if @game %>
   <div class="current_match_header">
     <h1><%=@game.name%></h1>
     <h4><%=@game.description%></h2>
@@ -95,8 +95,17 @@
       <ul class="list-group">
         <% @home_activities.each do |activity| %>
 
-        <li class="list-group-item"><%=activity.user.firstname%> <%=activity.user.lastname%> ran <%=activity.distance%> meters <a href="<%=activity.map_polyline%>"> <i class="fa fa-map-marker"></i></a></li>
+        <li class="list-group-item"><%=activity.user.firstname%> <%=activity.user.lastname%> ran <%=activity.distance%> meters <a href="" data-toggle="modal" data-target="#<%=activity.id%>"> <i class="fa fa-map-marker"></i></a></li>
 
+        <div id="<%=activity.id%>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="<%=activity.id%>Label" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <img src="<%=activity.map_polyline%>" class="img-responsive">
+              </div>
+            </div>
+          </div>
+        </div>
         <%end%>
       </ul>
     </div>
@@ -112,12 +121,12 @@
       <div class="actionBox">
 
 
-          <%= form_for :trash_talk, format: :json, url: trash_talks_path, remote: true,  html: { id: "trashtalk",:'data-type' => 'json'} do |f| %>
-            <%= f.text_field :content %>
-            <%= f.hidden_field :user_id, :value => @user.id %>
-            <%= f.hidden_field :game_id, :value => @game.id %>
-            <%= f.submit %>
-          <% end %>
+        <%= form_for :trash_talk, format: :json, url: trash_talks_path, remote: true,  html: { id: "trashtalk",:'data-type' => 'json'} do |f| %>
+        <%= f.text_field :content %>
+        <%= f.hidden_field :user_id, :value => @user.id %>
+        <%= f.hidden_field :game_id, :value => @game.id %>
+        <%= f.submit %>
+        <% end %>
 
 
         <ul id="trashtalklist" class="commentList">
@@ -143,14 +152,24 @@
       <ul class="list-group">
         <% @away_activities.each do |activity| %>
 
-        <li class="list-group-item"><%=activity.user.firstname%> <%=activity.user.lastname%> ran <%=activity.distance%> meters <a href="" data-lightbox="team_a_maps" data-title="<%=activity.user.firstname%> <%=activity.user.firstname%> ran <%=activity.distance%> meters"> <i class="fa fa-map-marker"></i></span> </a></li>
+        <li class="list-group-item"><%=activity.user.firstname%> <%=activity.user.lastname%> ran <%=activity.distance%> meters <a href="" data-toggle="modal" data-target="#<%=activity.id%>"> <i class="fa fa-map-marker"></i></a></li>
+
+        <div id="<%=activity.id%>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="<%=activity.id%>Label" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <img src="<%=activity.map_polyline%>" class="img-responsive">
+              </div>
+            </div>
+          </div>
+        </div>
 
         <%end%>
       </ul>
     </div>
 
   </div>
-<% else %>
+  <% else %>
   <h3>Not in a game</h3>
-<% end %>
+  <% end %>
 </div>
