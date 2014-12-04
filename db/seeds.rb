@@ -30,7 +30,7 @@ end
 end
 
 50.times do
-  Activity.create(:user_id => User.all.sample.id, :map_polyline => 'https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&key=AIzaSyCZOcgiu-KmKZjDBAvT9GbK46JJhjXgQJw&path=enc:cepcF~gshVaI%60RiTj[gUpg@wPtYN%60LqsKbnP_i@%60q@%7Bo@tdAa[h[%7D_Ahv@ap@l[%7DaBhkBmRdb@qoBhlGoh@pz@j@JaHlDkz@b_AmcAxs@%7BcAzd@yv@b@uUmBkQ%7BGu%60@aZkcBm%60BuLiGcKqAgP%60D%7BhA~z@yWfI%7DLv@a_B_@%7BzAu]uhDsV_xBre@kOuCyL%7BN%5CuA', :distance => Random.rand(200), :date_of_activity => Faker::Date.forward(7))
+  Activity.create(:user_id => User.all.sample.id, :map_polyline => "https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&key=#{ENV['GOOGLEAPI']}", :distance => Random.rand(200), :date_of_activity => Faker::Date.forward(7))
 end
 
 30.times do
