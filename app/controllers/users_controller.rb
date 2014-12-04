@@ -1,4 +1,5 @@
 require 'httparty'
+require 'uri'
 class UsersController < ApplicationController
   def welcome
      render :welcome
@@ -79,6 +80,8 @@ class UsersController < ApplicationController
     #if the user does not have a team pull only the user data from Strava
     now=Date.today
     p week_start_unix = now.at_beginning_of_week.to_time.to_i
+    google_uri_builder = 'https://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=false&key=AIzaSyCZOcgiu-KmKZjDBAvT9GbK46JJhjXgQJw&path=enc:'
+
     if (!@user.team)
       user_strava_data=HTTParty.get("https://www.strava.com/api/v3/athlete/activities", headers: {"Authorization" => "Bearer #{@user.token}"},query: {:after => week_start_unix})
       p @user.activities.count
@@ -93,7 +96,7 @@ class UsersController < ApplicationController
             if  active["id"]>@user.activities.last.activityid
               act.activityid= active["id"]
               act.user_id= @user.id
-              act.map_polyline= active["map"]["summary_polyline"]
+              act.map_polyline= URI.escape(google_uri_builder + active["map"]["summary_polyline"])
               act.distance= active["distance"]
               act.save
             end

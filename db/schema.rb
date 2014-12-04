@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20141201034943) do
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
-    t.string   "map_polyline"
+    t.text     "map_polyline"
     t.integer  "distance"
     t.date     "date_of_activity"
     t.integer  "activityid",       default: 0
