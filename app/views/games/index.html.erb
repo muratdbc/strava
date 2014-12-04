@@ -7,7 +7,7 @@
 <div class="non_nav">
 <% if @game %>
   <div class="current_match_header">
-    <h2><%=@game.name%></h2>
+    <h1><%=@game.name%></h1>
     <h4><%=@game.description%></h2>
     </div>
 
@@ -48,7 +48,7 @@
   <div class="row">
 
     <div class="col-md-5 team_show team_a">
-      <h3><%=@home_team.name%></h3>
+      <h3 class="team_name_display"><%=@home_team.name%></h3>
     </div>
 
 
@@ -68,7 +68,7 @@
     </div>
 
     <div class="col-md-5 team_show team_b">
-      <h3><%=@away_team.name%></h3>
+      <h3 class="team_name_display"><%=@away_team.name%></h3>
     </div>
 
   </div>
@@ -79,7 +79,7 @@
       <h1><%=@home_total%> meters</h1>
     </div>
     <div class="col-md-2 team_show">
-      <h1>VS.</h1>
+      <h1 class="lobstah">VS.</h1>
     </div>
     <div class="col-md-5 team_show team_b">
       <h1><%=@away_total%> meters</h1>
