@@ -46,7 +46,7 @@ class GamesController < ApplicationController
 
         @end_time = @game.created_at + 7.days
     end
-    
+
     render :index
   end
 

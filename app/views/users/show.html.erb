@@ -38,14 +38,14 @@
 
 
 
-      
+
           <%= form_for :team_chat, url: team_chats_path, remote: true, html: {class: "nifty_form"} do |f| %>
             <%= f.text_field :content %>
             <%= f.submit %>
           <% end %>
 
 
-         
+
 
           <!--     <form id="team_chat_form" class="form-inline" role="form" accept-charset="UTF-8" action="/team_chats" method="post">
                 <div class="form-group">
@@ -80,7 +80,7 @@
         <div class="no_team_content">
           <h3>No team selected</h3>
           <br>
-          <a href="/teams"><button type="button" class="btn btn-success">Explore Teams <span class="glyphicon glyphicon-search"></span> </button></a>
+          <a href="/teams"><button type="button" class="btn btn-success">Explore Teams <i class="fa fa-search"></i> </button></a>
         </div>
       </div>
 
