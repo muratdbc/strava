@@ -15,8 +15,6 @@
 //= require turbolinks
 //= require bootstrap
 //= require lightbox
-
 //= require jquery.countdown
-
 //= require app.js
 
