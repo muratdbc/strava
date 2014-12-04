@@ -16,8 +16,9 @@ Rails.application.routes.draw do
     resources :games
   end
   resources :teams
-  
+
   resources :team_chats, only: [:new, :create]
+  resources :trash_talks, only: [:new, :create]
 
   get 'logout' , to: 'logout#destroy'
 
