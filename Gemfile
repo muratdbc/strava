@@ -36,6 +36,7 @@ gem 'httparty'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'byebug', :groups => [:development, :test]
+# gem 'uri'
 
 
 # Use ActiveModel has_secure_password
