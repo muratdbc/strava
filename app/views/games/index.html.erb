@@ -133,7 +133,7 @@
           <% @game.trash_talks.each do |trashtalk| %>
           <li>
             <div class="commenterImage">
-              <img src=<%=@user.profile_img %> />
+              <img src=<%=trashtalk.user.profile_img %> />
             </div>
             <div class="commentText">
               <p class=""><%=trashtalk.content%></p> <span class="date sub-text"><%=trashtalk.created_at%></span>
