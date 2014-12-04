@@ -39,7 +39,7 @@
 
 
 
-          <%= form_for :team_chat, format: :json, url: team_chats_path, remote: true,  html: { id: "chat"} do |f| %>
+          <%= form_for :team_chat, url: team_chats_path, remote: true,  html: { id: "chat",:'data-type' => 'json'} do |f| %>
             <%= f.text_field :content %>
             <%= f.hidden_field :user_id, :value => @user.id %>
             <%= f.submit %>
