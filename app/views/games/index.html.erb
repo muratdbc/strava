@@ -7,7 +7,7 @@
 <div class="non_nav">
   <% if @game %>
   <div class="current_match_header">
-    <h1><%=@game.name%></h1>
+    <h1 class="textClass"><%=@game.name%></h1>
     <h4><%=@game.description%></h2>
     </div>
 
@@ -53,6 +53,22 @@
 
 
     <div class="col-md-2 team_show">
+      <h1 class="textClass"> --- VS ---</h1>
+    </div>
+
+    <div class="col-md-5 team_show team_b">
+      <h3 class="team_name_display"><%=@away_team.name%></h3>
+    </div>
+
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-5 team_show team_a">
+      <h1><%=@home_total%> meters</h1>
+    </div>
+
+    <div class="col-md-2 team_show">
       <div id="hidden_end_time"><%=@end_time%></div>
 
       <h3><div class="our_countdown"></div>
@@ -67,20 +83,7 @@
 
     </div>
 
-    <div class="col-md-5 team_show team_b">
-      <h3 class="team_name_display"><%=@away_team.name%></h3>
-    </div>
 
-  </div>
-
-
-  <div class="row">
-    <div class="col-md-5 team_show team_a">
-      <h1><%=@home_total%> meters</h1>
-    </div>
-    <div class="col-md-2 team_show">
-<!--       <h1 class="lobstah">VS.</h1> -->    
-    </div>
     <div class="col-md-5 team_show team_b">
       <h1><%=@away_total%> meters</h1>
     </div>
@@ -115,17 +118,16 @@
     <div class="col-md-4 team_show">
 
       <div class="title_box">
-        <label>Talk Shit</label>
+        <label>Talk Smack</label>
       </div>
 
       <div class="actionBox">
 
 
         <%= form_for :trash_talk, format: :json, url: trash_talks_path, remote: true,  html: { id: "trashtalk",:'data-type' => 'json'} do |f| %>
-        <%= f.text_field :content %>
+        <%= f.text_field :content, :class=>"form-control", :placeholder => "chat" %>
         <%= f.hidden_field :user_id, :value => @user.id %>
         <%= f.hidden_field :game_id, :value => @game.id %>
-        <%= f.submit :class=>"btn-form-custom"%>
         <% end %>
 
 
@@ -138,11 +140,11 @@
 
 
             <div class="commentText">
-            <% if trashtalk.user.team_id == @user.team_id %>
+              <% if trashtalk.user.team_id == @user.team_id %>
               <p class="green_font"><%=trashtalk.content%></p><br><span class="date sub-text green_font"><%=trashtalk.created_at%></span>
-            <% else %>
+              <% else %>
               <p class="red_font"><%=trashtalk.content%></p><br><span class="date sub-text red_font"><%=trashtalk.created_at%></span>
-            <% end %>
+              <% end %>
 
             </div>
           </li>

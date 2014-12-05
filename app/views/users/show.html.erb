@@ -38,9 +38,8 @@
 
           <%= form_for :team_chat, url: team_chats_path, remote: true,  html: { id: "chat",:'data-type' => 'json'} do |f| %>
 
-            <%= f.text_field :content %>
+            <%= f.text_field :content, :class=>"form-control", :placeholder => "chat" %>
             <%= f.hidden_field :user_id, :value => @user.id %>
-            <%= f.submit :class=>"btn-form-custom" %>
           <% end %>
 
 
@@ -63,10 +62,10 @@
                   </div>
                   <div class="commentText">
                     <p class="green_font"><%=chat.content%></p> <span class="date sub-text"><%=chat.updated_at%></span>
-                 
+
                   </div>
                 </li>
-                
+
                 <%end%>
 
 

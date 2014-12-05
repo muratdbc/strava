@@ -198,6 +198,10 @@ body {
   margin: auto;
 }
 
+.profile_picture {
+  border: 4px solid #2c3e50;
+}
+
 /* ******** Team Information **********/
 
 .team_information {
@@ -208,6 +212,7 @@ body {
   margin-top: 20px;
   height: 170px;
   width: 170px;
+  border: 3px solid #2c3e50;
 }
 
 .team_stats {
@@ -228,6 +233,7 @@ body {
 
 .title_box {
   background-color: black;
+  opacity: 0.8;
   padding:10px;
   border-radius: 5px;
 }
@@ -311,140 +317,175 @@ body {
   /*============================== CURRENT MATCH ============================== */
 
   .btn-form-custom {
-  background-color:#FC4C02;
-  border-color: #FC4C02;
-  color: #fff !important;
-  font-family: "Lobster";
-  font-size: 15px;
+    background-color:#FC4C02;
+    border-color: #FC4C02;
+    color: #fff !important;
+    font-family: "Lobster";
+    font-size: 15px;
   }
 
   .green_font{
-    color: #16a085;
+    color: #2c3e50;
     float: left;
   }
 
-  .red_font{  
-    color: #e74c3c;
+  .red_font{
+    color: #c0392b;
     float: left;
   }
-
 
 
   .current_match_header {
     text-align: center;
-    margin-bottom: 30px;
-  }
-
-  .team_show{
-    text-align: center;
-    padding: 0px;
-  }
-
-  .team_player {
-    padding: 0px;
-  }
-
-  .team_match_image {
-    height: 150px;
-    width: 150px;
-    margin-bottom: 10px;
-  }
-
-  .team_a {
-    color: #16a085;
-  }
-  .team_a img {
-    border: 4px solid #16a085;
-  }
-
-  .team_b {
-    color: #e74c3c;
-  }
-  .team_b img {
-    border: 4px solid #e74c3c;
-  }
-
-  .team_name_display {
-    font-size: 4.5em;
-  }
-
-  .lobstah {
-    font-family: "Lobster";
-    letter-spacing: 5px;
-  }
-
-  .modal-body img{
-    width: 100%;
-    margin: auto;
-  }
-  /*============================== TEAMS PAGE ============================== */
-
-  .form_field_wrapper {
-    margin-top: 20px;
     margin-bottom: 40px;
-    width: 100%;
   }
 
-  .search_teams_form {
-    width: 40%;
-    margin: auto;
-  }
+  .current_match_header h1{
+   font-size: 2em;
+ }
 
-  .entire_team {
-    border: 1px solid rgba(0, 0, 0, .1);
-    padding-right: 3%;
-    padding-left: 3%;
-    padding-bottom: 2%;
-    text-align: center;
-    border-radius: 10px;
-  }
+ /*pulsing text for vs*/
 
-  .entire_team:hover .team_member{
-    opacity: .6;
+ .textClass {
+  font-size: 5em;
+  -webkit-animation: color_change 1s infinite alternate;
+  -moz-animation: color_change 1s infinite alternate;
+  -ms-animation: color_change 1s infinite alternate;
+  -o-animation: color_change 1s infinite alternate;
+  animation: color_change 1s infinite alternate;
+}
+@-webkit-keyframes color_change {
+ from { color: #2c3e50; }
+ to { color: #c0392b; }
+}
+@-moz-keyframes color_change {
+ from { color: #2c3e50; }
+ to { color: #c0392b; }
+}
+@-ms-keyframes color_change {
+ from { color: #2c3e50; }
+ to { color: #c0392b; }
+}
+@-o-keyframes color_change {
+ from { color: #2c3e50; }
+ to { color: #c0392b; }
+}
+@keyframes color_change {
+ from { color: #2c3e50; }
+ to { color: #c0392b; }
+}
+
+.team_show{
+  text-align: center;
+  padding: 0px;
+}
+
+.team_player {
+  padding: 0px;
+}
+
+.team_match_image {
+  height: 150px;
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+.team_a {
+  color: #2c3e50;
+}
+.team_a img {
+  border: 4px solid #2c3e50;
+}
+
+.team_b {
+  color: #c0392b;
+}
+.team_b img {
+  border: 4px solid #c0392b;
+}
+
+.team_name_display {
+  font-size: 4.5em;
+}
+
+.lobstah {
+  font-family: "Lobster";
+  letter-spacing: 5px;
+}
+
+.modal-body img{
+  width: 100%;
+  margin: auto;
+}
+/*============================== TEAMS PAGE ============================== */
+
+.form_field_wrapper {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.search_teams_form {
+  width: 40%;
+  margin: auto;
+}
+
+.entire_team {
+  border: 1px solid rgba(0, 0, 0, .1);
+  padding-right: 3%;
+  padding-left: 3%;
+  padding-bottom: 2%;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.entire_team:hover .team_member{
+  opacity: .6;
 /*    background-color: black;
 */    transform: scale(0.3);
-    transition: all 0.5s ease-in-out;
-  }
+transition: all 0.5s ease-in-out;
+}
 
-  .entire_team:hover .hidden_button1{
-    position: absolute;
-    display: block;
-    width: 87%;
-    z-index: 100;
-    bottom: 45.5%;
-  }
+.entire_team:hover .hidden_button1{
+  position: absolute;
+  display: block;
+  width: 87%;
+  z-index: 100;
+  bottom: 45.5%;
+}
 
-   .entire_team:hover .hidden_button2{
-    position: absolute;
-    display: block;
-    width: 87%;
-    z-index: 100;
-    bottom: 34%;
-  }
+.entire_team:hover .hidden_button2{
+  position: absolute;
+  display: block;
+  width: 87%;
+  z-index: 100;
+  bottom: 34%;
+}
 
-  .hidden_button1{
-    display: none;
-  }
+.hidden_button1{
+  display: none;
+}
 
-  .hidden_button2{
-    display: none;
-  }
+.hidden_button2{
+  display: none;
+}
 
 
-  .team_member {
-    text-align: center;
-  }
+.team_member {
+  text-align: center;
+}
 
-  .team_member_image {
-    height: 70px;
-    width: 70px;
-    margin-bottom: 10px;
-  }
+.team_member_image {
+  height: 70px;
+  width: 70px;
+  margin-bottom: 10px;
+  border: 2px solid #2c3e50;
+}
 
-  .create_team_section {
-    text-align: center;
-    padding-top: 20px;
-  }
+.create_team_section {
+  text-align: center;
+  padding-top: 20px;
+}
 
 
 
@@ -456,11 +497,9 @@ body {
 
 .our_countdown {
   font-size: 2em;
-  font-family: "Lobster";
   letter-spacing: 5px;
 }
 
 .our_countdown h1 {
   font-size: 1.5em;
-  font-family: "Lobster";
 }
